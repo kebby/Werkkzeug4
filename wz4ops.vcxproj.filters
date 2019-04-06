@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="util">
+      <UniqueIdentifier>{cb3f2bf1-0d3f-4aa9-9a2e-f2265c2cbb60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{a962bb33-d04d-4034-8b71-7982f18e370d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="tools\wz4ops\doc.cpp" />
+    <ClCompile Include="tools\wz4ops\main.cpp" />
+    <ClCompile Include="tools\wz4ops\output.cpp" />
+    <ClCompile Include="tools\wz4ops\parse.cpp" />
+    <ClCompile Include="tools\wz4ops\wikitext.cpp" />
+    <ClCompile Include="altona\util\scanner.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\devices_win.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\graphics.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\graphics_blank.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\graphics_dx9.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\math.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\serialize.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\system.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\system_win.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\types.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\types2.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\input2.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\sound.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\windows.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tools\wz4ops\doc.hpp" />
+    <ClInclude Include="tools\wz4ops\main.hpp" />
+    <ClInclude Include="altona\util\scanner.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\graphics.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\graphics_dx9_private.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\math.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\serialize.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\system.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\types.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\types2.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\warnings.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\input2.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\sound.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\windows.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

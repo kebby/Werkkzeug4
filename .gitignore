@@ -1,0 +1,6 @@
+# gitignore file for WZ4
+
+_build
+bin
+
+*.user

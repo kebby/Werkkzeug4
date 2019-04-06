@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="altona\base\devices_win.cpp" />
+    <ClCompile Include="altona\base\graphics.cpp" />
+    <ClCompile Include="altona\base\graphics_dx9.cpp" />
+    <ClCompile Include="altona\base\input2.cpp" />
+    <ClCompile Include="altona\base\math.cpp" />
+    <ClCompile Include="altona\base\serialize.cpp" />
+    <ClCompile Include="altona\base\sound.cpp" />
+    <ClCompile Include="altona\base\system.cpp" />
+    <ClCompile Include="altona\base\system_win.cpp" />
+    <ClCompile Include="altona\base\types.cpp" />
+    <ClCompile Include="altona\base\types2.cpp" />
+    <ClCompile Include="altona\base\windows.cpp" />
+    <ClCompile Include="altona\extra\blobheap.cpp" />
+    <ClCompile Include="altona\extra\freecam.cpp" />
+    <ClCompile Include="altona\extra\mcubes.cpp" />
+    <ClCompile Include="altona\gui\3dwindow.cpp" />
+    <ClCompile Include="altona\gui\borders.cpp" />
+    <ClCompile Include="altona\gui\color.cpp" />
+    <ClCompile Include="altona\gui\controls.cpp" />
+    <ClCompile Include="altona\gui\dialog.cpp" />
+    <ClCompile Include="altona\gui\frames.cpp" />
+    <ClCompile Include="altona\gui\gui.cpp" />
+    <ClCompile Include="altona\gui\listwindow.cpp" />
+    <ClCompile Include="altona\gui\manager.cpp" />
+    <ClCompile Include="altona\gui\overlapped.cpp" />
+    <ClCompile Include="altona\gui\tabs.cpp" />
+    <ClCompile Include="altona\gui\textwindow.cpp" />
+    <ClCompile Include="altona\gui\timeline.cpp" />
+    <ClCompile Include="altona\gui\window.cpp" />
+    <ClCompile Include="altona\gui\wire.cpp" />
+    <ClCompile Include="altona\network\http.cpp" />
+    <ClCompile Include="altona\network\miniftp.cpp" />
+    <ClCompile Include="altona\network\netdebug.cpp" />
+    <ClCompile Include="altona\network\sockets.cpp" />
+    <ClCompile Include="altona\network\sockets_bsd.cpp" />
+    <ClCompile Include="altona\shadercomp\asc_doc.cpp" />
+    <ClCompile Include="altona\shadercomp\asc_output.cpp" />
+    <ClCompile Include="altona\shadercomp\asc_parser.cpp" />
+    <ClCompile Include="altona\shadercomp\compile_cg.cpp" />
+    <ClCompile Include="altona\shadercomp\compile_dx.cpp" />
+    <ClCompile Include="altona\shadercomp\shaderdis.cpp" />
+    <ClCompile Include="altona\util\animation.cpp" />
+    <ClCompile Include="altona\util\bitio.cpp" />
+    <ClCompile Include="altona\util\camera.cpp" />
+    <ClCompile Include="altona\util\effect.cpp" />
+    <ClCompile Include="altona\util\fastcompress.cpp" />
+    <ClCompile Include="altona\util\image.cpp" />
+    <ClCompile Include="altona\util\ipp.cpp" />
+    <ClCompile Include="altona\util\movieplayer.cpp" />
+    <ClCompile Include="altona\util\musicplayer.cpp" />
+    <ClCompile Include="altona\util\painter.cpp" />
+    <ClCompile Include="altona\util\perfmon.cpp" />
+    <ClCompile Include="altona\util\rasterizer.cpp" />
+    <ClCompile Include="altona\util\scanner.cpp" />
+    <ClCompile Include="altona\util\shaders.cpp" />
+    <ClCompile Include="altona\util\stb_image.c" />
+    <ClCompile Include="altona\util\taskscheduler.cpp" />
+    <ClCompile Include="altona\wiki\layoutwindow.cpp" />
+    <ClCompile Include="altona\wiki\markup.cpp" />
+    <ClCompile Include="altona\wiki\pdfout.cpp" />
+    <ClCompile Include="altona\wiki\resources.cpp" />
+    <ClCompile Include="altona\wz4lib\basic.cpp" />
+    <ClCompile Include="altona\wz4lib\basic_ops.cpp" />
+    <ClCompile Include="altona\wz4lib\build.cpp" />
+    <ClCompile Include="altona\wz4lib\doc.cpp" />
+    <ClCompile Include="altona\wz4lib\werkkzeug4.wire.cpp" />
+    <ClCompile Include="altona\wz4lib\wz4gui.cpp" />
+    <ClCompile Include="altona\wz4lib\main.cpp" />
+    <ClCompile Include="altona\wz4lib\poc.cpp" />
+    <ClCompile Include="altona\wz4lib\poc_ops.cpp" />
+    <ClCompile Include="altona\wz4lib\script.cpp" />
+    <ClCompile Include="altona\wz4lib\videoencoder_win.cpp" />
+    <ClCompile Include="altona\wz4lib\view.cpp" />
+    <ClCompile Include="altona\wz4lib\wiki.cpp" />
+    <ClCompile Include="altona\wz4lib\wz4shaders.cpp" />
+    <ClCompile Include="wz4\wz4frlib\adf.cpp" />
+    <ClCompile Include="wz4\wz4frlib\adf_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\adf_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\bspline.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaosfx.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaosfx_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_code.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_fx.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_xsi.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaos_font.cpp" />
+    <ClCompile Include="wz4\wz4frlib\chaos_font_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\easter.cpp" />
+    <ClCompile Include="wz4\wz4frlib\easter_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\easter_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr062.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr062_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_chaos.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_chaos_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_mandelbulb.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_mandelbulb_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_mandelbulb_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_sph.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_sph_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_tron.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_tron_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr063_tron_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr067.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fr067_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fxparticle.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fxparticle_mc.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fxparticle_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\fxparticle_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\genvector.cpp" />
+    <ClCompile Include="wz4\wz4frlib\kbfx.cpp" />
+    <ClCompile Include="wz4\wz4frlib\kbfx_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\kbfx_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\packfile.cpp" />
+    <ClCompile Include="wz4\wz4frlib\packfilegen.cpp" />
+    <ClCompile Include="wz4\wz4frlib\pdf.cpp" />
+    <ClCompile Include="wz4\wz4frlib\pdf_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\screens4fx.cpp" />
+    <ClCompile Include="wz4\wz4frlib\screens4_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\tADF.cpp" />
+    <ClCompile Include="wz4\wz4frlib\tron.cpp" />
+    <ClCompile Include="wz4\wz4frlib\tron_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\tron_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz3_bitmap_code.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz3_bitmap_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_anim.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_anim_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_audio.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_audio_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_bsp.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_bsp_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_demo2.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_demo2nodes.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_demo2_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_gui.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_ipp.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_ipp_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_ipp_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_lwo.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_obj.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_xsi.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrl.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrlmod.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrlmod_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrlsc.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrl_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl2.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl2_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl2_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl_shader.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_rovemtrl.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_rovemtrl_ops.cpp" />
+    <ClCompile Include="wz4\wz4frlib\wz4_rovemtrl_shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="altona\base\graphics.hpp" />
+    <ClInclude Include="altona\base\graphics_dx9_private.hpp" />
+    <ClInclude Include="altona\base\input2.hpp" />
+    <ClInclude Include="altona\base\math.hpp" />
+    <ClInclude Include="altona\base\serialize.hpp" />
+    <ClInclude Include="altona\base\sound.hpp" />
+    <ClInclude Include="altona\base\system.hpp" />
+    <ClInclude Include="altona\base\types.hpp" />
+    <ClInclude Include="altona\base\types2.hpp" />
+    <ClInclude Include="altona\base\warnings.hpp" />
+    <ClInclude Include="altona\base\windows.hpp" />
+    <ClInclude Include="altona\extra\blobheap.hpp" />
+    <ClInclude Include="altona\extra\freecam.hpp" />
+    <ClInclude Include="altona\extra\mcubes.hpp" />
+    <ClInclude Include="altona\gui\3dwindow.hpp" />
+    <ClInclude Include="altona\gui\borders.hpp" />
+    <ClInclude Include="altona\gui\color.hpp" />
+    <ClInclude Include="altona\gui\controls.hpp" />
+    <ClInclude Include="altona\gui\dialog.hpp" />
+    <ClInclude Include="altona\gui\frames.hpp" />
+    <ClInclude Include="altona\gui\gui.hpp" />
+    <ClInclude Include="altona\gui\listwindow.hpp" />
+    <ClInclude Include="altona\gui\manager.hpp" />
+    <ClInclude Include="altona\gui\overlapped.hpp" />
+    <ClInclude Include="altona\gui\tabs.hpp" />
+    <ClInclude Include="altona\gui\textwindow.hpp" />
+    <ClInclude Include="altona\gui\timeline.hpp" />
+    <ClInclude Include="altona\gui\window.hpp" />
+    <ClInclude Include="altona\gui\wire.hpp" />
+    <ClInclude Include="altona\network\http.hpp" />
+    <ClInclude Include="altona\network\miniftp.hpp" />
+    <ClInclude Include="altona\network\netdebug.hpp" />
+    <ClInclude Include="altona\network\netdebug_plugins.hpp" />
+    <ClInclude Include="altona\network\sockets.hpp" />
+    <ClInclude Include="altona\shadercomp\asc_doc.hpp" />
+    <ClInclude Include="altona\shadercomp\shadercomp.hpp" />
+    <ClInclude Include="altona\shadercomp\shaderdis.hpp" />
+    <ClInclude Include="altona\util\algorithms.hpp" />
+    <ClInclude Include="altona\util\animation.hpp" />
+    <ClInclude Include="altona\util\bitio.hpp" />
+    <ClInclude Include="altona\util\camera.hpp" />
+    <ClInclude Include="altona\util\effect.hpp" />
+    <ClInclude Include="altona\util\fastcompress.hpp" />
+    <ClInclude Include="altona\util\image.hpp" />
+    <ClInclude Include="altona\util\ipp.hpp" />
+    <ClInclude Include="altona\util\json.hpp" />
+    <ClInclude Include="altona\util\movieplayer.hpp" />
+    <ClInclude Include="altona\util\musicplayer.hpp" />
+    <ClInclude Include="altona\util\painter.hpp" />
+    <ClInclude Include="altona\util\perfmon.hpp" />
+    <ClInclude Include="altona\util\rasterizer.hpp" />
+    <ClInclude Include="altona\util\scanner.hpp" />
+    <ClInclude Include="altona\util\shaders.hpp" />
+    <ClInclude Include="altona\util\simd_float.hpp" />
+    <ClInclude Include="altona\util\stb_image_write.h" />
+    <ClInclude Include="altona\util\taskscheduler.hpp" />
+    <ClInclude Include="altona\wiki\layoutwindow.hpp" />
+    <ClInclude Include="altona\wiki\markup.hpp" />
+    <ClInclude Include="altona\wiki\pdfout.hpp" />
+    <ClInclude Include="altona\wiki\resources.hpp" />
+    <ClInclude Include="altona\wz4lib\basic.hpp" />
+    <ClInclude Include="altona\wz4lib\basic_ops.hpp" />
+    <ClInclude Include="altona\wz4lib\build.hpp" />
+    <ClInclude Include="altona\wz4lib\doc.hpp" />
+    <ClInclude Include="altona\wz4lib\werkkzeug4.wire.txt.h" />
+    <ClInclude Include="altona\wz4lib\wz4gui.hpp" />
+    <ClInclude Include="altona\wz4lib\main.hpp" />
+    <ClInclude Include="altona\wz4lib\poc.hpp" />
+    <ClInclude Include="altona\wz4lib\poc_ops.hpp" />
+    <ClInclude Include="altona\wz4lib\script.hpp" />
+    <ClInclude Include="altona\wz4lib\serials.hpp" />
+    <ClInclude Include="altona\wz4lib\version.hpp" />
+    <ClInclude Include="altona\wz4lib\videoencoder.hpp" />
+    <ClInclude Include="altona\wz4lib\view.hpp" />
+    <ClInclude Include="altona\wz4lib\wiki.hpp" />
+    <ClInclude Include="altona\wz4lib\wz4shaders.hpp" />
+    <ClInclude Include="altona_config.hpp" />
+    <ClInclude Include="wz4\wz4frlib\adf.hpp" />
+    <ClInclude Include="wz4\wz4frlib\adf_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\adf_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\bspline.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaosfx.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaosfx_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_code.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_fx.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_xsi.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaos_font.hpp" />
+    <ClInclude Include="wz4\wz4frlib\chaos_font_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\easter.hpp" />
+    <ClInclude Include="wz4\wz4frlib\easter_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\easter_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr062.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr062_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_chaos.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_chaos_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_mandelbulb.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_mandelbulb_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_mandelbulb_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_sph.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_sph_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_tron.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_tron_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr063_tron_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr067.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fr067_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fxparticle.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fxparticle_mc.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fxparticle_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\fxparticle_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\genvector.hpp" />
+    <ClInclude Include="wz4\wz4frlib\kbfx.hpp" />
+    <ClInclude Include="wz4\wz4frlib\kbfx_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\kbfx_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\packfile.hpp" />
+    <ClInclude Include="wz4\wz4frlib\packfilegen.hpp" />
+    <ClInclude Include="wz4\wz4frlib\pdf.hpp" />
+    <ClInclude Include="wz4\wz4frlib\pdf_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\screens4fx.hpp" />
+    <ClInclude Include="wz4\wz4frlib\screens4_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\tADF.hpp" />
+    <ClInclude Include="wz4\wz4frlib\tron.hpp" />
+    <ClInclude Include="wz4\wz4frlib\tron_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\tron_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz3_bitmap_code.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz3_bitmap_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_anim.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_anim_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_audio.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_audio_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_bsp.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_bsp_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_demo2.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_demo2nodes.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_demo2_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_gui.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_ipp.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_ipp_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_ipp_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mesh.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mesh_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrl.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrlmod.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrlmod_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrlsc.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrl_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl2.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl2_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl2_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl_shader.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_rovemtrl.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_rovemtrl_ops.hpp" />
+    <ClInclude Include="wz4\wz4frlib\wz4_rovemtrl_shader.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ASCItem Include="altona\util\shaders.asc" />
+    <ASCItem Include="altona\wz4lib\wz4shaders.asc" />
+    <ASCItem Include="wz4\wz4frlib\adf_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\fr063_mandelbulb_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\easter_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\fr063_tron_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\fxparticle_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\kbfx_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\tron_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\wz4_ipp_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\wz4_mtrl2_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\wz4_mtrl_shader.asc" />
+    <ASCItem Include="wz4\wz4frlib\wz4_rovemtrl_shader.asc" />
+    <OpsItem Include="altona\wz4lib\basic_ops.ops" />
+    <OpsItem Include="altona\wz4lib\poc_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\adf_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\chaosfx_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\chaosmesh_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\chaos_font_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\easter_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\fr062_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\fr063_chaos_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\fr063_mandelbulb_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\fr063_sph_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\fr063_tron_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\fr067_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\fxparticle_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\kbfx_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\pdf_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\screens4_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\tron_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz3_bitmap_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_anim_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_audio_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_bsp_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_demo2_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_ipp_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_mesh_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_modmtrlmod_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_modmtrl_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_mtrl2_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_mtrl_ops.ops" />
+    <OpsItem Include="wz4\wz4frlib\wz4_rovemtrl_ops.ops" />
+    <Bin2hItem Include="altona\wz4lib\werkkzeug4.wire.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Bin2hItem Include="altona\wz4lib\doc.txt" />
+    <Text Include="altona\wz4lib\todo.txt" />
+    <None Include="altona\wz4lib\stb_vorbis.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{988F539C-DB3C-416D-94B1-96A61922BFFB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>wz4lib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir)\_build\bin\$(ProjectName)\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\_build\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir)\_build\bin\$(ProjectName)\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\_build\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir)\_build\bin\$(ProjectName)\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\_build\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir)\_build\bin\$(ProjectName)\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\_build\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerListingLocation>$(IntDir)/%(RelativeDir)/</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerListingLocation>$(IntDir)/%(RelativeDir)/</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerListingLocation>$(IntDir)/%(RelativeDir)/</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerListingLocation>$(IntDir)/%(RelativeDir)/</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="rules\wz4.targets" />
+  </ImportGroup>
+</Project>

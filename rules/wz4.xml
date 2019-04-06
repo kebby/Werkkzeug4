@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectSchemaDefinitions xmlns="http://schemas.microsoft.com/build/2009/properties" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <ItemType Name="ASCItem" DisplayName="Altona Shader Compiler" />
+  <ContentType Name="ASCContent" ItemType="ASCItem" DisplayName="Altona Shader Compiler" />
+  <FileExtension Name="*.asc" ContentType="ASCContent" />  
+  
+  <ItemType Name="OpsItem" DisplayName="wz4ops" />
+  <ContentType Name="OpsContent" ItemType="OpsItem" DisplayName="wz4ops" />
+  <FileExtension Name="*.ops" ContentType="OpsContent" />  
+
+  <ItemType Name="Bin2hItem" DisplayName="bin2h" />
+  <ContentType Name="Bin2hContent" ItemType="Bin2hItem" DisplayName="bin2h" />
+  <FileExtension Name="*.wire.txt" ContentType="Bin2hContent" />  
+  
+</ProjectSchemaDefinitions>

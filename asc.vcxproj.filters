@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="tools\asc\main.cpp" />
+    <ClCompile Include="tools\asc\new.cpp" />
+    <ClCompile Include="tools\asc\output.cpp" />
+    <ClCompile Include="tools\asc\parse.cpp" />
+    <ClCompile Include="altona\base\graphics.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\graphics_dx9.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\math.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\serialize.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\system.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\system_win.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\types.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\types2.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\scanner.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\asc_doc.cpp">
+      <Filter>shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\asc_output.cpp">
+      <Filter>shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\asc_parser.cpp">
+      <Filter>shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\compile_cg.cpp">
+      <Filter>shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\compile_dx.cpp">
+      <Filter>shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\shaderdis.cpp">
+      <Filter>shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\devices_win.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\windows.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\sound.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\input2.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tools\asc\main.hpp" />
+    <ClInclude Include="altona\base\graphics.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\graphics_dx9_private.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\math.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\serialize.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\system.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\types.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\types2.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\warnings.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\scanner.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\shadercomp\asc_doc.hpp">
+      <Filter>shadercomp</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\shadercomp\shadercomp.hpp">
+      <Filter>shadercomp</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\shadercomp\shaderdis.hpp">
+      <Filter>shadercomp</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\windows.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\sound.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\input2.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="base">
+      <UniqueIdentifier>{09476d00-5187-41cc-b373-a9c2344f8138}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{31cded41-84f1-433b-974e-288f98ed5022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shadercomp">
+      <UniqueIdentifier>{4b9650b7-3ac9-48dd-a03c-05926e612814}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

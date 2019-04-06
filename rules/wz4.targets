@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ <ItemGroup>
+  <PropertyPageSchema Include="$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml" />
+  <AvailableItemName Include="ASCItem">
+   <Targets>ASCCompile</Targets>
+  </AvailableItemName>
+ </ItemGroup>
+ 
+ <Target
+  Name="ASCCompile"
+  BeforeTargets="ClCompile"
+  Inputs="%(ASCItem.Identity)"
+  Outputs="%(ASCItem.RelativeDir)%(ASCItem.Filename).cpp;%(ASCItem.RelativeDir)%(ASCItem.Filename).hpp">
+
+  <Message Text="asc %(ASCItem.Identity)" Importance="High"/>
+  <Exec WorkingDirectory="%(ASCItem.RootDir)%(ASCItem.Directory)" Command="$(ProjectDir)\bin\tools\$(Platform)_$(Configuration)\asc.exe %(ASCItem.Filename).asc -q" />
+ </Target>
+
+ 
+ <ItemGroup>
+  <PropertyPageSchema Include="$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml" />
+  <AvailableItemName Include="OpsItem">
+   <Targets>OpsCompile</Targets>
+  </AvailableItemName>
+ </ItemGroup>
+ 
+ <Target
+  Name="OpsCompile"
+  BeforeTargets="ClCompile"
+  Inputs="%(OpsItem.Identity)"
+  Outputs="%(OpsItem.RelativeDir)%(OpsItem.Filename).cpp;%(OpsItem.RelativeDir)%(OpsItem.Filename).hpp">
+
+  <Message Text="wz4ops %(OpsItem.Identity) %(OpsItem.RelativeDir)%(OpsItem.Filename).cpp" Importance="High"/>
+  <Exec Command="$(ProjectDir)\bin\tools\$(Platform)_$(Configuration)\wz4ops.exe %(OpsItem.Identity)" />
+ </Target>
+ 
+ 
+ <ItemGroup>
+  <PropertyPageSchema Include="$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml" />
+  <AvailableItemName Include="Bin2hItem">
+   <Targets>Bin2hCompile</Targets>
+  </AvailableItemName>
+ </ItemGroup>
+ 
+ <Target
+  Name="Bin2hCompile"
+  BeforeTargets="ClCompile"
+  Inputs="%(Bin2hItem.Identity)"
+  Outputs="%(Bin2hItem.Identity).h">
+
+  <Message Text="bin2h %(Bin2hItem.Identity)" Importance="High"/>
+  <Exec Command="$(ProjectDir)\bin\tools\$(Platform)_$(Configuration)\bin2h.exe %(Bin2hItem.Identity)" />
+ </Target>
+ 
+</Project>

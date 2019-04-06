@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="altona">
+      <UniqueIdentifier>{041bb01b-3870-4b5a-9ba0-b1e7480cfd0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\base">
+      <UniqueIdentifier>{42fc9964-8a4f-4a82-b42c-69519b90d395}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\extra">
+      <UniqueIdentifier>{79208dc5-b53d-4641-bcc5-86df2fb4fa4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\gui">
+      <UniqueIdentifier>{042ed927-ab4a-4666-9e66-bcce92e2bf27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\network">
+      <UniqueIdentifier>{62612aab-b4f8-4f2c-a0ef-be5075030e56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\shadercomp">
+      <UniqueIdentifier>{6af88371-79e3-4186-8054-2e2f9ef3ee49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\util">
+      <UniqueIdentifier>{20782102-5c42-4298-89e7-2c1761de255c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\wiki">
+      <UniqueIdentifier>{3e795239-f10f-4aed-a547-27c214e0cb75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="altona\util\generated">
+      <UniqueIdentifier>{22aaef33-d935-4219-be4f-8ee35b7878d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wz4">
+      <UniqueIdentifier>{a1b32949-9381-4fde-9971-933dd2657d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wz4\wz4lib">
+      <UniqueIdentifier>{5ffe7710-4834-42bf-88b9-a0a230e1baf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wz4\wz4frlib">
+      <UniqueIdentifier>{e9ed140b-3409-4203-9e4f-25d06494dcf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wz4\wz4lib\generated">
+      <UniqueIdentifier>{a409e4d5-3b32-48e8-b120-f2bb1c5fad7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wz4\wz4frlib\generated">
+      <UniqueIdentifier>{099dda48-98d4-466a-b7c2-5f9946a2ac20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="altona\base\devices_win.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\graphics.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\graphics_dx9.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\input2.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\math.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\serialize.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\sound.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\system.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\system_win.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\types.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\types2.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\base\windows.cpp">
+      <Filter>altona\base</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\ipp.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\movieplayer.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\musicplayer.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\painter.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\perfmon.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\rasterizer.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\scanner.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\stb_image.c">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\taskscheduler.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\animation.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\bitio.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\camera.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\effect.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\fastcompress.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\image.cpp">
+      <Filter>altona\util</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\util\shaders.cpp">
+      <Filter>altona\util\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\extra\blobheap.cpp">
+      <Filter>altona\extra</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\extra\freecam.cpp">
+      <Filter>altona\extra</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\extra\mcubes.cpp">
+      <Filter>altona\extra</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\3dwindow.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\borders.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\color.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\controls.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\dialog.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\frames.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\gui.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\listwindow.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\manager.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\overlapped.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\tabs.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\textwindow.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\timeline.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\window.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\gui\wire.cpp">
+      <Filter>altona\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\network\http.cpp">
+      <Filter>altona\network</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\network\miniftp.cpp">
+      <Filter>altona\network</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\network\netdebug.cpp">
+      <Filter>altona\network</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\network\sockets.cpp">
+      <Filter>altona\network</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\network\sockets_bsd.cpp">
+      <Filter>altona\network</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\asc_doc.cpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\asc_output.cpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\asc_parser.cpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\compile_cg.cpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\compile_dx.cpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\shadercomp\shaderdis.cpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wiki\layoutwindow.cpp">
+      <Filter>altona\wiki</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wiki\markup.cpp">
+      <Filter>altona\wiki</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wiki\resources.cpp">
+      <Filter>altona\wiki</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\build.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\doc.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\main.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\poc.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\script.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\videoencoder_win.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\view.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\wiki.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\basic.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\wz4shaders.cpp">
+      <Filter>wz4\wz4lib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\poc_ops.cpp">
+      <Filter>wz4\wz4lib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\basic_ops.cpp">
+      <Filter>wz4\wz4lib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\wz4gui.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\adf.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\bspline.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaos_font.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaosfx.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_code.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_fx.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_xsi.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\easter.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr062.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_chaos.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_mandelbulb.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_sph.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_tron.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr067.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fxparticle.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fxparticle_mc.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\genvector.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\kbfx.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\packfile.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\packfilegen.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\pdf.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\screens4fx.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\tADF.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\tron.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz3_bitmap_code.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_anim.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_audio.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_bsp.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_demo2.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_demo2nodes.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_gui.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_ipp.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_lwo.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_obj.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_xsi.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrl.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrlmod.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrlsc.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl2.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_rovemtrl.cpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wiki\pdfout.cpp">
+      <Filter>altona\wiki</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\adf_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\adf_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaos_font_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaosfx_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\chaosmesh_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\easter_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\easter_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr062_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_chaos_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_mandelbulb_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_mandelbulb_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_sph_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_tron_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr063_tron_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fr067_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fxparticle_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\fxparticle_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\kbfx_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\kbfx_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\pdf_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\screens4_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\tron_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\tron_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz3_bitmap_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_anim_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_audio_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_bsp_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_demo2_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_ipp_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_ipp_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mesh_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrl_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_modmtrlmod_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl2_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_mtrl2_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_rovemtrl_ops.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="wz4\wz4frlib\wz4_rovemtrl_shader.cpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="altona\wz4lib\werkkzeug4.wire.cpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="altona\base\graphics.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\graphics_dx9_private.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\input2.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\math.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\serialize.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\sound.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\system.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\types.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\types2.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\warnings.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\base\windows.hpp">
+      <Filter>altona\base</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\image.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\ipp.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\json.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\movieplayer.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\musicplayer.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\painter.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\perfmon.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\rasterizer.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\scanner.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\simd_float.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\stb_image_write.h">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\taskscheduler.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\algorithms.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\animation.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\bitio.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\camera.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\effect.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\fastcompress.hpp">
+      <Filter>altona\util</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\util\shaders.hpp">
+      <Filter>altona\util\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\extra\blobheap.hpp">
+      <Filter>altona\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\extra\freecam.hpp">
+      <Filter>altona\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\extra\mcubes.hpp">
+      <Filter>altona\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\3dwindow.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\borders.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\color.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\controls.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\dialog.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\frames.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\gui.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\listwindow.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\manager.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\overlapped.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\tabs.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\textwindow.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\timeline.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\window.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\gui\wire.hpp">
+      <Filter>altona\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\network\http.hpp">
+      <Filter>altona\network</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\network\miniftp.hpp">
+      <Filter>altona\network</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\network\netdebug.hpp">
+      <Filter>altona\network</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\network\netdebug_plugins.hpp">
+      <Filter>altona\network</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\network\sockets.hpp">
+      <Filter>altona\network</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\shadercomp\asc_doc.hpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\shadercomp\shadercomp.hpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\shadercomp\shaderdis.hpp">
+      <Filter>altona\shadercomp</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wiki\layoutwindow.hpp">
+      <Filter>altona\wiki</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wiki\markup.hpp">
+      <Filter>altona\wiki</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wiki\resources.hpp">
+      <Filter>altona\wiki</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\build.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\doc.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\main.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\poc.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\script.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\serials.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\version.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\videoencoder.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\view.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\wiki.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\basic.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\wz4shaders.hpp">
+      <Filter>wz4\wz4lib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\poc_ops.hpp">
+      <Filter>wz4\wz4lib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\basic_ops.hpp">
+      <Filter>wz4\wz4lib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\wz4gui.hpp">
+      <Filter>wz4\wz4lib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\adf.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\bspline.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaos_font.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaosfx.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_code.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_fx.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_xsi.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\easter.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr062.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_chaos.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_mandelbulb.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_sph.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_tron.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr067.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fxparticle.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fxparticle_mc.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\genvector.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\kbfx.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\packfile.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\packfilegen.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\pdf.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\screens4fx.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\tADF.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\tron.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz3_bitmap_code.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_anim.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_audio.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_bsp.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_demo2.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_demo2nodes.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_gui.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_ipp.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mesh.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrl.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrlmod.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrlsc.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl2.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_rovemtrl.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wiki\pdfout.hpp">
+      <Filter>altona\wiki</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\adf_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\adf_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaos_font_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaosfx_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\chaosmesh_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\easter_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\easter_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr062_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_chaos_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_mandelbulb_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_mandelbulb_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_sph_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_tron_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr063_tron_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fr067_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fxparticle_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\fxparticle_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\kbfx_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\kbfx_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\pdf_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\screens4_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\tron_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\tron_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz3_bitmap_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_anim_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_audio_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_bsp_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_demo2_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_ipp_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_ipp_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mesh_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrl_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_modmtrlmod_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl2_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_mtrl2_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_rovemtrl_ops.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="wz4\wz4frlib\wz4_rovemtrl_shader.hpp">
+      <Filter>wz4\wz4frlib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="altona\wz4lib\werkkzeug4.wire.txt.h">
+      <Filter>wz4\wz4lib\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="altona_config.hpp">
+      <Filter>wz4\wz4frlib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="altona\wz4lib\stb_vorbis.inl">
+      <Filter>wz4\wz4lib</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="altona\wz4lib\todo.txt">
+      <Filter>wz4\wz4lib</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ASCItem Include="altona\util\shaders.asc">
+      <Filter>altona\util</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\adf_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\easter_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\fr063_mandelbulb_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\fr063_tron_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\fxparticle_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\kbfx_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\tron_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\wz4_ipp_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\wz4_mtrl_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\wz4_mtrl2_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="wz4\wz4frlib\wz4_rovemtrl_shader.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+    <ASCItem Include="altona\wz4lib\wz4shaders.asc">
+      <Filter>wz4\wz4frlib</Filter>
+    </ASCItem>
+  </ItemGroup>
+  <ItemGroup>
+    <OpsItem Include="altona\wz4lib\basic_ops.ops">
+      <Filter>wz4\wz4lib</Filter>
+    </OpsItem>
+    <OpsItem Include="altona\wz4lib\poc_ops.ops">
+      <Filter>wz4\wz4lib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\adf_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\chaos_font_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\chaosfx_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\chaosmesh_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\easter_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\fr062_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\fr063_chaos_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\fr063_mandelbulb_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\fr063_sph_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\fr063_tron_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\fr067_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\fxparticle_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\kbfx_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\pdf_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\screens4_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\tron_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz3_bitmap_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_anim_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_audio_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_bsp_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_demo2_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_ipp_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_mesh_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_modmtrl_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_modmtrlmod_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_mtrl_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_mtrl2_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+    <OpsItem Include="wz4\wz4frlib\wz4_rovemtrl_ops.ops">
+      <Filter>wz4\wz4frlib</Filter>
+    </OpsItem>
+  </ItemGroup>
+  <ItemGroup>
+    <Bin2hItem Include="altona\wz4lib\doc.txt">
+      <Filter>wz4\wz4lib</Filter>
+    </Bin2hItem>
+    <Bin2hItem Include="altona\wz4lib\werkkzeug4.wire.txt">
+      <Filter>wz4\wz4lib</Filter>
+    </Bin2hItem>
+  </ItemGroup>
+</Project>

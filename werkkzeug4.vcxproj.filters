@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Image Include="wz4\werkkzeug4\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="wz4\werkkzeug4\icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="wz4\werkkzeug4\main.cpp" />
+    <ClCompile Include="wz4\werkkzeug4\touchlibs.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="wz4\werkkzeug4\main.hpp" />
+  </ItemGroup>
+</Project>
