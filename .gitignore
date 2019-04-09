@@ -4,3 +4,14 @@ _build
 bin
 
 *.user
+.vs/
+cef/*
+!cef/PUT_CEF_HERE.txt
+
+altona/wz4lib/wz4shaders.hpp
+altona/wz4lib/wz4shaders.cpp
+altona/wz4lib/werkkzeug4.wire.txt.h
+altona/util/shaders.hpp
+altona/util/shaders.cpp
+wz4/wz4frlib/*_shader.?pp
+wz4/wz4frlib/*_ops.?pp
