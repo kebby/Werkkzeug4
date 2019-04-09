@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="libcef_wrapper.vcxproj">
+      <Project>{f097a71c-cfb6-415c-8f2d-8a5a369ad991}</Project>
+    </ProjectReference>
     <ProjectReference Include="wz4lib.vcxproj">
       <Project>{988f539c-db3c-416d-94b1-96a61922bffb}</Project>
     </ProjectReference>
@@ -51,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="test.wz4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="screens4\app.manifest" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -143,6 +149,18 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(ProjectDir)cef\Release\lib*.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\chrome_elf.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\*.bin $(OutDir)
+copy /y $(ProjectDir)cef\Resources\icudtl.dat $(OutDir)
+md $(OutDir)\Resources
+copy /y $(ProjectDir)cef\Resources\*.pak $(OutDir)\Resources
+md $(OutDir)\Resources\locales
+copy /y $(ProjectDir)cef\Resources\locales $(OutDir)\Resources\locales 
+
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -159,6 +177,18 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(ProjectDir)cef\Release\lib*.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\chrome_elf.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\*.bin $(OutDir)
+copy /y $(ProjectDir)cef\Resources\icudtl.dat $(OutDir)
+md $(OutDir)\Resources
+copy /y $(ProjectDir)cef\Resources\*.pak $(OutDir)\Resources
+md $(OutDir)\Resources\locales
+copy /y $(ProjectDir)cef\Resources\locales $(OutDir)\Resources\locales 
+
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -179,6 +209,18 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(ProjectDir)cef\Release\lib*.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\chrome_elf.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\*.bin $(OutDir)
+copy /y $(ProjectDir)cef\Resources\icudtl.dat $(OutDir)
+md $(OutDir)\Resources
+copy /y $(ProjectDir)cef\Resources\*.pak $(OutDir)\Resources
+md $(OutDir)\Resources\locales
+copy /y $(ProjectDir)cef\Resources\locales $(OutDir)\Resources\locales 
+
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -199,6 +241,18 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(ProjectDir)cef\Release\lib*.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\chrome_elf.dll $(OutDir)
+copy /y $(ProjectDir)cef\Release\*.bin $(OutDir)
+copy /y $(ProjectDir)cef\Resources\icudtl.dat $(OutDir)
+md $(OutDir)\Resources
+copy /y $(ProjectDir)cef\Resources\*.pak $(OutDir)\Resources
+md $(OutDir)\Resources\locales
+copy /y $(ProjectDir)cef\Resources\locales $(OutDir)\Resources\locales 
+
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

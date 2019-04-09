@@ -55,4 +55,7 @@
       <Filter>Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="screens4\app.manifest" />
+  </ItemGroup>
 </Project>
