@@ -384,6 +384,11 @@
     <Text Include="altona\wz4lib\todo.txt" />
     <None Include="altona\wz4lib\stb_vorbis.inl" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="libcef_wrapper.vcxproj">
+      <Project>{f097a71c-cfb6-415c-8f2d-8a5a369ad991}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{988F539C-DB3C-416D-94B1-96A61922BFFB}</ProjectGuid>

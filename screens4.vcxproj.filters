@@ -26,6 +26,7 @@
     <ClInclude Include="screens4\pugixml.hpp">
       <Filter>3rdparty\pugixml</Filter>
     </ClInclude>
+    <ClInclude Include="screens4\HtmlRenderer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="screens4\image_win.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="screens4\pugixml.cpp">
       <Filter>3rdparty\pugixml</Filter>
     </ClCompile>
+    <ClCompile Include="screens4\HtmlRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="screens4\icon.rc">
