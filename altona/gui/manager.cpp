@@ -1123,15 +1123,15 @@ void sGui_::PaintButtonBorder(sRect &r,sBool pressed) const
 {
   if(!pressed)
   {
-    sGui->RectHL(r,sGC_HIGH2,sGC_LOW2); 
-    r.Extend(-1);
+    //sGui->RectHL(r,sGC_HIGH2,sGC_LOW2); 
+    //r.Extend(-1);
     sGui->RectHL(r,sGC_HIGH,sGC_LOW); 
     r.Extend(-1);
   }
   else
   {
-    sGui->RectHL(r,sGC_LOW2,sGC_HIGH2); 
-    r.Extend(-1);
+    //sGui->RectHL(r,sGC_LOW2,sGC_HIGH2); 
+    //r.Extend(-1);
     sGui->RectHL(r,sGC_LOW,sGC_HIGH); 
     r.Extend(-1);
   }

@@ -1552,7 +1552,7 @@ void MainWindow::CmdEditOptions()
     gh.Label(L"Expensive IPP Quality");
     gh.Choice(&Doc->EditOptions.ExpensiveIPPQuality,L"low|medium|high");
     gh.Label(L"GUI theme");
-    gh.Choice(&Doc->EditOptions.Theme,L"Altona default|darker|dark|custom")->ChangeMsg = sMessage(this,&MainWindow::CmdUpdateTheme);
+    gh.Choice(&Doc->EditOptions.Theme,L"Altona default|Amigaaaaa|Dark|Custom")->ChangeMsg = sMessage(this,&MainWindow::CmdUpdateTheme);
     gh.PushButton(L"edit",sMessage(this,&MainWindow::CmdEditTheme),0);
 
   //  gh.Label(L"Minimal Timeline");
@@ -4583,8 +4583,6 @@ void WinStack::OnPaint2D()
         l1=sColorFade(color,sGetColor2D(l0),0.5f);
         h1=sColorFade(color,sGetColor2D(h0),0.5f);
 
-        sGui->RectHL(r,l0,h0); 
-        r.Extend(-1);
 
         sSetColor2D(0,l1);
         sRect2D(r.x0,r.y0,r.x1,r.y0+1,0);

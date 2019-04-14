@@ -38,3 +38,8 @@
 
 #define sCONFIG_CEF 1
 
+#ifdef _DEBUG
+#define sCONFIG_BUILD_DEBUG
+#else
+#define sCONFIG_BUILD_RELEASE
+#endif
