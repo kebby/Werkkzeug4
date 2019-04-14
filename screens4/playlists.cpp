@@ -10,6 +10,8 @@
 #include "network/http.hpp"
 #include "util/image.hpp"
 #include "image_win.hpp"
+#include "HtmlRenderer.hpp"
+
 
 extern void LogTime();
 
@@ -234,7 +236,7 @@ void PlaylistMgr::AddPlaylist(Playlist *newpl)
         break;
       }
     }
-    if (!replaced) LogTime(); sDPrintF(L"-> new\n");
+    if (!replaced) { LogTime(); sDPrintF(L"-> new\n"); }
     Playlists.AddTail(newpl);
   }
 
@@ -310,43 +312,41 @@ NewSlideData* PlaylistMgr::OnFrame(sF32 delta, const sChar *doneId, sBool doneHa
 
   if (nsd && !nsd->Error)
   {
-      switch (nsd->Type)
+    switch (nsd->Type)
+    {
+    case VIDEO:
+    {
+      // wait for first frame to be fully decoded. must be in rendering thread, thus here.
+      if (nsd->Movie->GetInfo().XSize < 0)
       {
-      case VIDEO:
-      {
-          // wait for first frame to be fully decoded. must be in rendering thread, thus here.
-          if (nsd->Movie->GetInfo().XSize<0)
-          {
-              nsd->Error = sTRUE;
-              sRelease(nsd->Movie);
-          }
-          else
-          {
-              sFRect uvr;
-              nsd->Movie->GetFrame(uvr);
-              if (nsd->Movie->GetInfo().XSize == 0 || uvr.SizeX() == 0)
-                  nsd = 0;
-          }
-      } break;
-      case WEB:
-      {
-        /*
-          // wait for web page to be rendered
-          if (nsd->Web->Error)
-          {
-              nsd->Error = sTRUE;
-              sRelease(nsd->Web);
-          }
-          else
-          {
-              sFRect uvr;
-              nsd->Web->GetFrame(uvr);
-              if (uvr.SizeX() == 0)
-                  nsd = 0;
-          }
-          */
-      } break;
+        nsd->Error = sTRUE;
+        sRelease(nsd->Movie);
       }
+      else
+      {
+        sFRect uvr;
+        nsd->Movie->GetFrame(uvr);
+        if (nsd->Movie->GetInfo().XSize == 0 || uvr.SizeX() == 0)
+          nsd = 0;
+      }
+    } break;
+    case WEB:
+    {
+      // wait for web page to be rendered
+      if (nsd->Web->HasError())
+      {
+        nsd->Error = sTRUE;
+        sRelease(nsd->Web);
+      }
+      else
+      {
+        sFRect uvr;
+        nsd->Web->GetFrame(uvr);
+        if (uvr.SizeX() == 0)
+          nsd = 0;
+      }
+    } break;
+    }
   }
 
   if (nsd)
@@ -773,8 +773,30 @@ void PlaylistMgr::AssetThreadFunc(sThread *t)
       {
         LogTime(); sDPrintF(L"downloaded %s\n",toRefresh->Path);
         {
+          const sChar *ext = sFindFileExtension(toRefresh->Path);
+#if sCONFIG_CEF
+          if (!sCmpStringI(ext, L"html"))
+          {
+            sString<sMAXPATH> htmlfilename;
+            htmlfilename = downloadfilename;
+            sAppendString(htmlfilename, L".html");
+            sRenameFile(downloadfilename, htmlfilename, sTRUE);
+
+            LogTime(); sDPrintF(L"rendering %s to PNG\n", toRefresh->Path);
+            sString<1024> url;
+            GetFileUrlFromPath(url, htmlfilename);
+            sImage image;
+            image.Init(RenderSizeX, RenderSizeY);
+            RenderHtml(url, 0x00000000, true, image);
+
+            image.SavePNG(filename);
+            sDeleteFile(htmlfilename);
+          }
+          else
+#endif
+            sRenameFile(downloadfilename, filename, sTRUE);
+
           sScopeLock lock(&Lock);
-          sRenameFile(downloadfilename, filename, sTRUE);
           toRefresh->CacheStatus = Asset::CACHED;
           toRefresh->Meta.ETag = client.GetETag();
         }
@@ -936,7 +958,7 @@ void PlaylistMgr::PrepareThreadFunc(sThread *t)
             }
             else
             {
-              sDPrintF(L"Error loading %s\n",myAsset->Path);
+              LogTime(); sDPrintF(L"Error loading %s\n",myAsset->Path);
               nsd->Error = sTRUE;
             }
           }
@@ -970,8 +992,7 @@ void PlaylistMgr::PrepareThreadFunc(sThread *t)
     }
     else
     {
-      LogTime();
-      sDPrintF(L"prepare: cache failed");
+      LogTime(); sDPrintF(L"prepare: cache failed\n");
       nsd->Error=sTRUE;
     }
    

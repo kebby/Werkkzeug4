@@ -10,8 +10,8 @@ defaults
   resolution 1280,720		// if missing, use desktop resolution
   fullscreen 0				// fullscreen (0 or 1)
 
-  slideprefix "rvn18slide"	// prefix of slide renderer ops in the wz4 file (fallback is "slide")
-  transprefix "rvn17trans"      // prefix of transition renderer ops in the wz4 file (fallback is "trans")
+  //slideprefix "rvn18slide"	// prefix of slide renderer ops in the wz4 file (fallback is "slide")
+  //transprefix "rvn17trans"      // prefix of transition renderer ops in the wz4 file (fallback is "trans")
 
   //slideprefix "besoffen"	// prefix of slide renderer ops in the wz4 file (fallback is "slide")
   //transprefix "kotz"      // prefix of transition renderer ops in the wz4 file (fallback is "trans")
@@ -24,6 +24,8 @@ defaults
   
   callbacks 1               // send per-slide callbacks back to PM
   
+  renderresolution 1920,1080 // resolution for rendering offline html slides (etc)
+
   //pngout "c:\test\frame.png" // save current slide as png to this path
 }
 

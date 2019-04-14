@@ -20,6 +20,8 @@ class sFile;
 sImage *sLoadImageWin32(sFile *file);
 sImage *sLoadImageWin32(const sChar *name);
 
+void GetFileUrlFromPath(const sStringDesc &url, const sChar *path);
+
 /****************************************************************************/
 
 #endif // FILE_CUBE_IMAGE_WIN_HPP

@@ -1125,9 +1125,6 @@
     </OpsItem>
   </ItemGroup>
   <ItemGroup>
-    <Bin2hItem Include="altona\wz4lib\doc.txt">
-      <Filter>wz4\wz4lib</Filter>
-    </Bin2hItem>
     <Bin2hItem Include="altona\wz4lib\werkkzeug4.wire.txt">
       <Filter>wz4\wz4lib</Filter>
     </Bin2hItem>

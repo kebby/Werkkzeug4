@@ -14,7 +14,11 @@
 #undef new
 #include <olectl.h>
 #include <Gdiplus.h>
+
+#include <shlwapi.h>
+
 #pragma comment (lib, "gdiplus.lib")
+#pragma comment (lib, "shlwapi.lib")
 #define new sDEFINE_NEW
 
 #include "base/system.hpp"
@@ -240,6 +244,17 @@ sImage *sLoadImageWin32(const sChar *name)
   delete file;
   return img;
 }
+
+/****************************************************************************/
+
+void GetFileUrlFromPath(const sStringDesc &url, const sChar *path)
+{
+  sString<2048> fullPath;
+  GetFullPathName(path, 2048, (sChar*)fullPath, 0);
+  DWORD urllen = url.Size;
+  UrlCreateFromPath(fullPath, url.Buffer, &urllen, 0);
+}
+
 
 /****************************************************************************/
 

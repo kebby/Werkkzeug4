@@ -13,6 +13,8 @@
 #include "base/types2.hpp"
 #include "util/image.hpp"
 #include "util/movieplayer.hpp"
+
+#include "HtmlRenderer.hpp"
 //#include "webview.hpp"
 
 
@@ -196,7 +198,8 @@ public:
 
   SiegmeisterData *SiegData;
   sMoviePlayer *Movie;
-  //WebView *Web;
+
+  ILiveBrowser *Web;
 
   const sChar *Id;
   sBool Error;
@@ -235,6 +238,8 @@ public:
 
   sBool Locked;
 	sBool CallbacksOn;
+
+  sInt RenderSizeX, RenderSizeY;
 
 private:
 

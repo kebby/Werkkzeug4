@@ -8,8 +8,10 @@ bool RenderHtml(const sChar *url, sU32 bkcolor, bool local, sImage &dest);
 class ILiveBrowser
 {
 public:
-  virtual bool CopyToTexture(sTexture2D *&tex) = 0;
-  virtual void Destroy() = 0;
+  virtual sMaterial * GetFrame(sFRect &uvrect) = 0;
+  virtual sF32 GetAspect() = 0;
+  virtual bool HasError() = 0;
+  virtual void Release() = 0;
 protected:
   virtual ~ILiveBrowser() {}
 };

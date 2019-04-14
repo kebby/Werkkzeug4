@@ -60,6 +60,8 @@ public:
   sInt MidiDevice;
   sInt MidiChannel;
 
+  Resolution RenderResolution;
+
   sPoolString PngOut;
 
   Config()
@@ -80,6 +82,7 @@ public:
     PngOut = L"";
     LockWhenDimmed = sFALSE;
 		Callbacks = sFALSE;
+    sClear(RenderResolution);
   }
 
   sBool Read(const sChar *filename)
@@ -145,11 +148,11 @@ private:
       else if (Scan->IfName(L"httpport"))
         HttpPort = Scan->ScanInt();
       else if (Scan->IfName(L"bartime"))
-        BarAnimTime = sClamp(Scan->ScanFloat(),0.1f,100.0f);
+        BarAnimTime = sClamp(Scan->ScanFloat(), 0.1f, 100.0f);
       else if (Scan->IfName(L"barspread"))
-        BarAnimSpread = sClamp(Scan->ScanFloat(),0.0f,1.0f);
+        BarAnimSpread = sClamp(Scan->ScanFloat(), 0.0f, 1.0f);
       else if (Scan->IfName(L"movievolume"))
-        MovieVolume = sFPow(10.0f,sClamp(Scan->ScanFloat(),-100.0f,12.0f)/20.0f);
+        MovieVolume = sFPow(10.0f, sClamp(Scan->ScanFloat(), -100.0f, 12.0f) / 20.0f);
       else if (Scan->IfName(L"slideprefix"))
         Scan->ScanString(SlidePrefix);
       else if (Scan->IfName(L"transprefix"))
@@ -159,13 +162,16 @@ private:
       else if (Scan->IfName(L"mididevice"))
         MidiDevice = Scan->ScanInt();
       else if (Scan->IfName(L"midichannel"))
-        MidiChannel = sClamp(Scan->ScanInt(),1,16);
+        MidiChannel = sClamp(Scan->ScanInt(), 1, 16);
       else if (Scan->IfName(L"pngout"))
         Scan->ScanString(PngOut);
       else if (Scan->IfName(L"lockwhendimmed"))
         LockWhenDimmed = Scan->ScanInt();
-			else if (Scan->IfName(L"callbacks"))
-			  Callbacks = Scan->ScanInt();
+      else if (Scan->IfName(L"callbacks"))
+        Callbacks = Scan->ScanInt();
+      else if (Scan->IfName(L"renderresolution"))
+        _Resolution(RenderResolution);
+
 	  else
         Scan->Error(L"syntax error");
     }

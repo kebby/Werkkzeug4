@@ -353,11 +353,10 @@ public:
     RenderList Pic, OpaquePic, Siegmeister, CustomFS;
 
     sMoviePlayer* Movie;
-    //WebView* Web;
-    void *Web; // haha
+    ILiveBrowser* Web;
 
     SlideEntry() : TexOp(0), Movie(0), Web(0) {}
-    ~SlideEntry() { sRelease(Movie); /* sRelease(Web); */}
+    ~SlideEntry() { sRelease(Movie); sRelease(Web); }
 
   } *Entry[2];
 
@@ -432,6 +431,8 @@ public:
     PngOutEvent = new sThreadEvent();
 
 		PlMgr.CallbacksOn = MyConfig->Callbacks;
+    PlMgr.RenderSizeX = MyConfig->RenderResolution.Width;
+    PlMgr.RenderSizeY = MyConfig->RenderResolution.Height;
   }
 
   ~MyApp()
@@ -553,16 +554,14 @@ public:
     case WEB:
     {
         NextSlide = e->CustomFS.GetNext(ns->RenderType);
-        /*
         sRelease(e->Web);
         e->Web = ns->Web;
         ns->Web = 0;
-        */
 
         RNCustomFullscreen2D *node = GetNode<RNCustomFullscreen2D>(L"Custom2DFS", NextSlide);
         sFRect uvr;
-        //node->Material = e->Web->GetFrame(uvr);
-        //node->Aspect = e->Web->GetAspect();
+        node->Material = e->Web->GetFrame(uvr);
+        node->Aspect = e->Web->GetAspect();
         node->UVRect = uvr;
     } break;
     }
@@ -659,7 +658,7 @@ public:
     SetChild(Main,CurShow,0);
 
     sRelease(Entry[0]->Movie);
-    //sRelease(Entry[0]->Web);
+    sRelease(Entry[0]->Web);
     if (Entry[1]->Movie)
       Entry[1]->Movie->SetVolume(MyConfig->MovieVolume);
 
@@ -1254,6 +1253,13 @@ void sMain()
     MyConfig->DefaultResolution.Width = si.CurrentXSize;
     MyConfig->DefaultResolution.Height = si.CurrentYSize;
   }
+
+  if (MyConfig->RenderResolution.Width == 0 || MyConfig->RenderResolution.Height == 0)
+  {    
+    MyConfig->RenderResolution.Width = MyConfig->DefaultResolution.Width;
+    MyConfig->RenderResolution.Height = MyConfig->DefaultResolution.Height;
+  }
+
 
   SetupScreenMode(MyConfig->DefaultResolution,MyConfig->DefaultFullscreen);
   sSetScreenMode(ScreenMode);

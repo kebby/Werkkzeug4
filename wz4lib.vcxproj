@@ -380,7 +380,6 @@
     <Bin2hItem Include="altona\wz4lib\werkkzeug4.wire.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Bin2hItem Include="altona\wz4lib\doc.txt" />
     <Text Include="altona\wz4lib\todo.txt" />
     <None Include="altona\wz4lib\stb_vorbis.inl" />
   </ItemGroup>

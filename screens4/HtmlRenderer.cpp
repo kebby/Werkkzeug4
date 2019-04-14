@@ -17,6 +17,8 @@
 #include "include/cef_app.h"
 #include "include/cef_client.h"
 #include "include/wrapper/cef_helpers.h"
+#include "util/shaders.hpp"
+
 
 extern HWND sHWND;
 
@@ -59,12 +61,9 @@ void InitCef()
   sString<2048> exepath;
   sExtractPath(mfn, exepath);
 
-  sString<1024> dir;
-  sGetCurrentDir(dir);
+  sString<1024> dir = exepath;
 
-  dir = L"C:\\code\\fr_public\\altona_wz4\\altona\\examples\\_graphics\\cube";
-
-  dir.AddPath(L"cef\\resources");
+  dir.AddPath(L"resources");
   auto dir2 = dir;
   dir2.AddPath(L"locales");
 
@@ -190,7 +189,8 @@ struct LiveClient :
 {
   LiveClient(const sChar *url, sInt sizeX, sInt sizeY, sU32 bkcolor, bool local) : SizeX(sizeX), SizeY(sizeY)
   {
-    stagingTex = new sTexture2D(sizeX, sizeY, sTEX_ARGB8888 | sTEX_STAGING | sTEX_NOMIPMAPS, 1);
+    stagingTex = new sTexture2D(sizeX, sizeY, sTEX_2D | sTEX_ARGB8888 | sTEX_STAGING | sTEX_NOMIPMAPS);
+    outputTex = new sTexture2D(sizeX, sizeY, sTEX_2D | sTEX_ARGB8888 | sTEX_DYNAMIC | sTEX_NOMIPMAPS);
 
     CefWindowInfo winfo;
     winfo.SetAsWindowless(sHWND);
@@ -205,34 +205,72 @@ struct LiveClient :
     settings.background_color = bkcolor;
     settings.windowless_frame_rate = 60;
 
+    Mtrl = new sSimpleMaterial;
+
+    Mtrl->Flags = sMTRL_ZOFF | sMTRL_CULLOFF | sMTRL_VC_COLOR0;
+    Mtrl->Texture[0] = outputTex;
+    Mtrl->TFlags[0] = sMTF_CLAMP | sMTF_UV0;
+    Mtrl->Prepare(sVertexFormatSingle);
+
     CefBrowserHost::CreateBrowser(winfo, this, url, settings, 0);       
   }
 
-  virtual ~LiveClient() {}
+  ~LiveClient() override
+  {
+    sDelete(Mtrl);
+    sDelete(stagingTex);
+    sDelete(outputTex);
+  }
+
+  // ILiveBrowser methods
+  sMaterial * GetFrame(sFRect &uvrect) override
+  {
+    uvrect.Init(0, 0, 1, 1);
+
+    if (Dirty)
+    {
+      outputTex->UpdateFrom(stagingTex);
+      Dirty = 0;
+    }
+
+    return Mtrl;
+  }
+
+  sF32 GetAspect() override { return (sF32)SizeX / (sF32)SizeY; }
+
+  bool HasError() override { return Error!=0; }
+
+
+  void Release() override
+  {
+    Browser->GetHost()->CloseBrowser(true);
+    Browser = 0;
+  }
+
+
 
   // CefClient methods
-  virtual CefRefPtr<CefLifeSpanHandler> GetLifeSpanHandler() override { return this; }
-  virtual CefRefPtr<CefLoadHandler> GetLoadHandler() override { return this; }
-  virtual CefRefPtr<CefRenderHandler> GetRenderHandler() override { return this; }
+  CefRefPtr<CefLifeSpanHandler> GetLifeSpanHandler() override { return this; }
+  CefRefPtr<CefLoadHandler> GetLoadHandler() override { return this; }
+  CefRefPtr<CefRenderHandler> GetRenderHandler() override { return this; }
 
   // CefLifeSpanHandler methods
-  void OnAfterCreated(CefRefPtr<CefBrowser> browser) override {
-    CEF_REQUIRE_UI_THREAD();
+  void OnAfterCreated(CefRefPtr<CefBrowser> browser) override 
+  {
     Browser = browser;
   }
 
   // CefLoadHandler methods
   void OnLoadEnd(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, int httpStatusCode) override
-  {
-    
+  {    
     if (frame->IsMain())
     {
       LoadDone = true;
     }
   }
 
-  void OnLoadError(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, ErrorCode errorCode, const CefString& errorText, const CefString& failedUrl) override {
-    CEF_REQUIRE_UI_THREAD();
+  void OnLoadError(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, ErrorCode errorCode, const CefString& errorText, const CefString& failedUrl) override 
+  {
     Error = true;
   }
 
@@ -275,31 +313,10 @@ struct LiveClient :
 //  void *sharehandle = 0;
 //  void *lasthandle = 0;
   sTexture2D *stagingTex = 0;
+  sTexture2D *outputTex = 0;
+  sMaterial *Mtrl = 0;
 
   IMPLEMENT_REFCOUNTING(LiveClient);
-
-  // Inherited via ILiveBrowser
-  bool CopyToTexture(sTexture2D *& tex) override
-  {
-    if (!tex)
-      tex = new sTexture2D(SizeX, SizeY, sTEX_ARGB8888 | sTEX_DYNAMIC | sTEX_NOMIPMAPS);
-    else
-      tex->ReInit(SizeX, SizeY, sTEX_ARGB8888 | sTEX_DYNAMIC | sTEX_NOMIPMAPS);
-
-    if (Dirty)
-    {
-      tex->UpdateFrom(stagingTex);
-      Dirty = 0;
-    }
-
-    return LoadDone;
-  }
-
-  void Destroy() override
-  {
-    Browser->GetHost()->CloseBrowser(true);
-    Browser = 0;
-  }
 };
 
 ILiveBrowser *CreateLiveBrowser(const sChar *url, sInt sizeX, sInt sizeY, sU32 bkcolor, bool local)

@@ -27,6 +27,7 @@
       <Filter>3rdparty\pugixml</Filter>
     </ClInclude>
     <ClInclude Include="screens4\HtmlRenderer.hpp" />
+    <ClInclude Include="altona_config.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="screens4\image_win.cpp" />

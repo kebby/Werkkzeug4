@@ -15,3 +15,4 @@ altona/util/shaders.hpp
 altona/util/shaders.cpp
 wz4/wz4frlib/*_shader.?pp
 wz4/wz4frlib/*_ops.?pp
+cache/
