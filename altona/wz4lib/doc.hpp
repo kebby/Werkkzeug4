@@ -741,6 +741,7 @@ struct wEditOptions
   {
     TH_DEFAULT,
     TH_DARKER,
+    TH_DARK,
     TH_CUSTOM,
   };
   sInt Theme;

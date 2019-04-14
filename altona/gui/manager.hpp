@@ -48,6 +48,7 @@ struct sGuiTheme
 
 extern const sGuiTheme sGuiThemeDefault;
 extern const sGuiTheme sGuiThemeDarker;
+extern const sGuiTheme sGuiThemeDark;
 
 /****************************************************************************/
 /***                                                                      ***/

@@ -2280,6 +2280,7 @@ void wEditOptions::ApplyTheme()
   {
   case TH_DEFAULT: gt=&sGuiThemeDefault; break;
   case TH_DARKER: gt=&sGuiThemeDarker; break;
+  case TH_DARK: gt = &sGuiThemeDark; break;
   case TH_CUSTOM: gt=&CustomTheme; break;
   }
   sVERIFY(gt);

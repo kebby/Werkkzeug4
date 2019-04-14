@@ -1209,8 +1209,8 @@ const sGuiTheme sGuiThemeDefault =
   0xc0c0c0, // low
   0xfafafa, // high2
   0x808080, // low2
-  L"Arial", // prop
-  L"Courier New", // fixed
+  L"Segoe UI", // prop
+  L"Consolas", // fixed
 };
 
 const sGuiTheme sGuiThemeDarker = 
@@ -1228,6 +1228,24 @@ const sGuiTheme sGuiThemeDarker =
   L"Arial", // prop
   L"Courier New", // fixed
 };
+
+const sGuiTheme sGuiThemeDark =
+{
+  0x202022, // back
+  0x1d1d1f, // doc
+  0x303032, // button
+  0xe0e0e0, // text
+  0xc0c0c4, // draw
+  0xc08000, // select
+  0x505052, // high
+  0x18181a, // low
+  0x606064, // high2
+  0x101012, // low2
+  L"Segoe UI", // prop
+  L"Consolas", // fixed
+};
+
+
 
 template <class streamer> void sGuiTheme::Serialize_(streamer &s)
 {
