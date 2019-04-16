@@ -18,3 +18,5 @@ wz4/wz4frlib/*_ops.?pp
 cache/
 config_wz4
 backup/
+Assets/
+GPUCache/
