@@ -35,10 +35,10 @@ void PocBitmapType_::Show(wObject *obj,wPaintInfo &pi)
   ;
 #line 36 "poc_ops.cpp"
 }
-#line 900 "poc_ops.ops"
+#line 931 "poc_ops.ops"
 void PocMaterialType_::Init()
 {
-#line 901 "poc_ops.ops"
+#line 932 "poc_ops.ops"
  
     Default=new PocMaterial;
     Default->Material = new sSimpleMaterial;
@@ -47,19 +47,19 @@ void PocMaterialType_::Init()
   ;
 #line 48 "poc_ops.cpp"
 }
-#line 908 "poc_ops.ops"
+#line 939 "poc_ops.ops"
 void PocMaterialType_::Exit()
 {
-#line 909 "poc_ops.ops"
+#line 940 "poc_ops.ops"
  
     Default->Release(); 
   ;
 #line 57 "poc_ops.cpp"
 }
-#line 913 "poc_ops.ops"
+#line 944 "poc_ops.ops"
 void PocMaterialType_::Show(wObject *obj,wPaintInfo &pi)
 {
-#line 914 "poc_ops.ops"
+#line 945 "poc_ops.ops"
 
     PocMaterial *mtrl;
   
@@ -78,29 +78,29 @@ void PocMaterialType_::Show(wObject *obj,wPaintInfo &pi)
   ;
 #line 79 "poc_ops.cpp"
 }
-#line 986 "poc_ops.ops"
+#line 1017 "poc_ops.ops"
 void PocMeshType_::Init()
 {
-#line 987 "poc_ops.ops"
+#line 1018 "poc_ops.ops"
 
     WireGeo = new sGeometry;
     WireGeo->Init(sGF_LINELIST|sGF_INDEX32,sVertexFormatSingle);
   ;
 #line 89 "poc_ops.cpp"
 }
-#line 992 "poc_ops.ops"
+#line 1023 "poc_ops.ops"
 void PocMeshType_::Exit()
 {
-#line 993 "poc_ops.ops"
+#line 1024 "poc_ops.ops"
 
     sDelete(WireGeo);
   ;
 #line 98 "poc_ops.cpp"
 }
-#line 997 "poc_ops.ops"
+#line 1028 "poc_ops.ops"
 void PocMeshType_::BeginEngine(wPaintInfo &pi,sBool clear)
 {
-#line 998 "poc_ops.ops"
+#line 1029 "poc_ops.ops"
 
     sSetTarget(sTargetPara(clear ? sST_CLEARALL : 0,pi.BackColor,pi.Spec));
     pi.View->SetTargetCurrent();
@@ -109,18 +109,18 @@ void PocMeshType_::BeginEngine(wPaintInfo &pi,sBool clear)
   ;
 #line 110 "poc_ops.cpp"
 }
-#line 1005 "poc_ops.ops"
+#line 1036 "poc_ops.ops"
 void PocMeshType_::EndEngine(wPaintInfo &pi)
 {
-#line 1006 "poc_ops.ops"
+#line 1037 "poc_ops.ops"
 
   ;
 #line 118 "poc_ops.cpp"
 }
-#line 1009 "poc_ops.ops"
+#line 1040 "poc_ops.ops"
 void PocMeshType_::Paint(wObject *obj,wPaintInfo &pi,sMatrix34 *mat,sInt matcount)
 {
-#line 1010 "poc_ops.ops"
+#line 1041 "poc_ops.ops"
 
     PocMeshCluster *cl;
     PocMesh *mesh;
@@ -150,10 +150,10 @@ void PocMeshType_::Paint(wObject *obj,wPaintInfo &pi,sMatrix34 *mat,sInt matcoun
   ;
 #line 151 "poc_ops.cpp"
 }
-#line 1038 "poc_ops.ops"
+#line 1069 "poc_ops.ops"
 void PocMeshType_::Hit(wObject *obj,const sRay &ray,wHitInfo &info)
 {
-#line 1039 "poc_ops.ops"
+#line 1070 "poc_ops.ops"
 
     sClear(info);
     if(obj->IsType(PocMeshType))
@@ -161,10 +161,10 @@ void PocMeshType_::Hit(wObject *obj,const sRay &ray,wHitInfo &info)
   ;
 #line 162 "poc_ops.cpp"
 }
-#line 1045 "poc_ops.ops"
+#line 1076 "poc_ops.ops"
 void PocMeshType_::Wireframe(wObject *obj,wPaintInfo &pi,sMatrix34 &mat)
 {
-#line 1046 "poc_ops.ops"
+#line 1077 "poc_ops.ops"
 
     if(obj->IsType(PocMeshType))
       ((PocMesh *)obj)->Wireframe(obj,pi,WireGeo,mat);
@@ -2144,7 +2144,7 @@ sBool PocBitmapCmdAtlas(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; cmd->Output=out; }
 
   {
-#line 506 "poc_ops.ops"
+#line 534 "poc_ops.ops"
 
     sStaticArray<PocBitmapAtlas> a;
     a.HintSize(cmd->InputCount);
@@ -2287,7 +2287,7 @@ sBool PocBitmapCmdPreMulAlpha(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; out->CopyFrom(in0); cmd->Output=out; }
 
   {
-#line 543 "poc_ops.ops"
+#line 571 "poc_ops.ops"
 
     sU8 *data = (sU8 *)out->Image->Data;
 
@@ -2409,7 +2409,7 @@ sBool PocBitmapCmdBlueToAlpha(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; out->CopyFrom(in0); cmd->Output=out; }
 
   {
-#line 575 "poc_ops.ops"
+#line 605 "poc_ops.ops"
 
     sU8 *data = (sU8 *)out->Image->Data;
     for(sInt i=0;i<out->Image->SizeX*out->Image->SizeY;i++)
@@ -2490,7 +2490,7 @@ sBool PocBitmapCmdColor(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; out->CopyFrom(in0); cmd->Output=out; }
 
   {
-#line 601 "poc_ops.ops"
+#line 631 "poc_ops.ops"
 
     sU8 *data = (sU8 *)out->Image->Data;
     
@@ -2660,7 +2660,7 @@ sBool PocBitmapCmdSCB(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; out->CopyFrom(in0); cmd->Output=out; }
 
   {
-#line 654 "poc_ops.ops"
+#line 684 "poc_ops.ops"
 
     sU8 *data = (sU8 *)out->Image->Data;
    
@@ -2827,7 +2827,7 @@ sBool PocBitmapCmdColorBalance(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; out->CopyFrom(in0); cmd->Output=out; }
 
   {
-#line 700 "poc_ops.ops"
+#line 730 "poc_ops.ops"
 
     sVector30 col,min,max,msc,pow;
     sVector30 c0,c1,c2;
@@ -3036,7 +3036,7 @@ sBool PocBitmapCmdBlur(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; cmd->Output=out; }
 
   {
-#line 754 "poc_ops.ops"
+#line 784 "poc_ops.ops"
 
     sInt passes = para->Filter + 1;
 
@@ -3177,7 +3177,7 @@ sBool PocBitmapCmdDistanceField(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; cmd->Output=out; }
 
   {
-#line 782 "poc_ops.ops"
+#line 812 "poc_ops.ops"
 
     sInt thres=para->Threshold*100;
     sInt scale=para->Scale;
@@ -3385,7 +3385,7 @@ sBool PocBitmapCmdHalf(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; cmd->Output=out; }
 
   {
-#line 841 "poc_ops.ops"
+#line 872 "poc_ops.ops"
 
     delete out->Image;
     out->Image = in0->Image->Half();
@@ -3458,7 +3458,7 @@ sBool PocBitmapCmdExport(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocBitmap; out->CopyFrom(in0); cmd->Output=out; }
 
   {
-#line 858 "poc_ops.ops"
+#line 889 "poc_ops.ops"
 
     out->Image->Save(cmd->Strings[0]);
   ;
@@ -3568,7 +3568,7 @@ sBool UnitTestCmdUnitTestPocBitmap(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new UnitTest; cmd->Output=out; }
 
   {
-#line 872 "poc_ops.ops"
+#line 903 "poc_ops.ops"
 
     sImage img;
     in0->CopyTo(&img);
@@ -3698,7 +3698,7 @@ sBool PocMaterialCmdMaterial(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocMaterial; cmd->Output=out; }
 
   {
-#line 948 "poc_ops.ops"
+#line 979 "poc_ops.ops"
 
     static sU32 blend[8] =
     {
@@ -3938,7 +3938,7 @@ sBool PocMeshCmdtorus(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocMesh; cmd->Output=out; }
 
   {
-#line 1070 "poc_ops.ops"
+#line 1101 "poc_ops.ops"
 
     sInt ty = para->Segments;
     sInt tx = para->Roundness;
@@ -4133,7 +4133,7 @@ sBool PocMeshCmdCube(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocMesh; cmd->Output=out; }
 
   {
-#line 1120 "poc_ops.ops"
+#line 1151 "poc_ops.ops"
 
     sVector31 pos[8];
     const static sInt ci[6][4] =
@@ -4238,7 +4238,7 @@ sBool PocMeshCmdAdd(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocMesh; cmd->Output=out; }
 
   {
-#line 1176 "poc_ops.ops"
+#line 1207 "poc_ops.ops"
 
     sInt incount = cmd->InputCount;
     sInt vc,ic,cc;
@@ -4341,7 +4341,7 @@ sBool PocMeshCmdTranslate(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocMesh; cmd->Output=out; }
 
   {
-#line 1224 "poc_ops.ops"
+#line 1255 "poc_ops.ops"
 
     PocMeshVertex *vp;
     sSRT srt;
@@ -4534,7 +4534,7 @@ sBool PocMeshCmdSetMtrl(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new PocMesh; cmd->Output=out; }
 
   {
-#line 1259 "poc_ops.ops"
+#line 1290 "poc_ops.ops"
 
     PocMeshCluster *cl;
     out->Copy(in0);

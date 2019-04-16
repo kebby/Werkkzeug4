@@ -130,7 +130,7 @@ public:
   void SetEngine(MeshBaseType_ *engine,wPaintInfo &pi);
 #line 615 "basic_ops.ops"
   void Hit(wObject *obj,const sRay &ray,wHitInfo &info);
-#line 645 "basic_ops.ops"
+#line 646 "basic_ops.ops"
   void Wireframe(wObject *obj,wPaintInfo &pi,sMatrix34 &mat);
 #line 136 "basic_ops.hpp"
 };
@@ -140,7 +140,7 @@ class ScreenshotProxyType_ : public AnyTypeType_
 public:
   ScreenshotProxyType_() { Parent = AnyTypeType; Flags = 0x0003; GuiSets = 0x0002; Symbol = L"ScreenshotProxy"; Label = L"ScreenshotProxy";  Init(); }
   ~ScreenshotProxyType_() { Exit(); }
-#line 1000 "basic_ops.ops"
+#line 1005 "basic_ops.ops"
 
     void Show(wObject *obj,wPaintInfo &pi);
   
@@ -153,7 +153,7 @@ class UnitTestType_ : public AnyTypeType_
 public:
   UnitTestType_() { Parent = AnyTypeType; Flags = 0x0001; GuiSets = 0x0001; Symbol = L"UnitTest"; Label = L"UnitTest";  Init(); }
   ~UnitTestType_() { Exit(); }
-#line 1116 "basic_ops.ops"
+#line 1121 "basic_ops.ops"
 
     void Show(wObject *obj,wPaintInfo &pi);
   

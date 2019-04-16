@@ -157,6 +157,7 @@ struct OfflineClient :
 
   void OnPaint(CefRefPtr<CefBrowser> browser, PaintElementType type, const RectList& dirtyRects, const void* buffer, int width, int height) override
   {
+    if (type == PET_VIEW)
     sCopyMem(Image.Data, buffer, 4 * width*height);
     if (LoadDone && type==PET_VIEW)
       PaintEvent.Signal();

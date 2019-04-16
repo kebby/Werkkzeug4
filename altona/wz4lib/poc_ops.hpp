@@ -41,7 +41,7 @@ class PocMaterialType_ : public AnyTypeType_
 public:
   PocMaterialType_() { Parent = AnyTypeType; Color= 0xff40ff40; Flags = 0x0003; GuiSets = 0x0000; Symbol = L"PocMaterial"; Label = L"PoC Material";  Init(); }
   ~PocMaterialType_() { Exit(); }
-#line 893 "poc_ops.ops"
+#line 924 "poc_ops.ops"
 
   private:
     PocMaterial *Default;
@@ -49,11 +49,11 @@ public:
     PocMaterial *GetDefault() { return Default; }
   
 #line 51 "poc_ops.hpp"
-#line 900 "poc_ops.ops"
+#line 931 "poc_ops.ops"
   void Init();
-#line 908 "poc_ops.ops"
+#line 939 "poc_ops.ops"
   void Exit();
-#line 913 "poc_ops.ops"
+#line 944 "poc_ops.ops"
   void Show(wObject *obj,wPaintInfo &pi);
 #line 59 "poc_ops.hpp"
 };
@@ -63,24 +63,24 @@ class PocMeshType_ : public MeshBaseType_
 public:
   PocMeshType_() { Parent = MeshBaseType; Color= 0xff40ffff; Flags = 0x0002; GuiSets = 0x0002; Symbol = L"PocMesh"; Label = L"PoC Mesh";  Init(); }
   ~PocMeshType_() { Exit(); }
-#line 982 "poc_ops.ops"
+#line 1013 "poc_ops.ops"
 
     sGeometry *WireGeo;
   
 #line 70 "poc_ops.hpp"
-#line 986 "poc_ops.ops"
+#line 1017 "poc_ops.ops"
   void Init();
-#line 992 "poc_ops.ops"
+#line 1023 "poc_ops.ops"
   void Exit();
-#line 997 "poc_ops.ops"
+#line 1028 "poc_ops.ops"
   void BeginEngine(wPaintInfo &pi,sBool clear);
-#line 1005 "poc_ops.ops"
+#line 1036 "poc_ops.ops"
   void EndEngine(wPaintInfo &pi);
-#line 1009 "poc_ops.ops"
+#line 1040 "poc_ops.ops"
   void Paint(wObject *obj,wPaintInfo &pi,sMatrix34 *mat,sInt matcount);
-#line 1038 "poc_ops.ops"
+#line 1069 "poc_ops.ops"
   void Hit(wObject *obj,const sRay &ray,wHitInfo &info);
-#line 1045 "poc_ops.ops"
+#line 1076 "poc_ops.ops"
   void Wireframe(wObject *obj,wPaintInfo &pi,sMatrix34 &mat);
 #line 86 "poc_ops.hpp"
 };

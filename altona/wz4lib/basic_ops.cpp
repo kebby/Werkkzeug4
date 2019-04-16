@@ -39,7 +39,7 @@ class UnitTestType_ *UnitTestType;
 
 /****************************************************************************/
 
-#line 771 "basic_ops.ops"
+#line 772 "basic_ops.ops"
 
   class SceneSelectNameId : public Scene
   {
@@ -76,7 +76,7 @@ class UnitTestType_ *UnitTestType;
 
 /****************************************************************************/
 
-#line 905 "basic_ops.ops"
+#line 909 "basic_ops.ops"
 
   class SceneMultiply : public Scene
   {
@@ -103,7 +103,7 @@ class UnitTestType_ *UnitTestType;
 
 /****************************************************************************/
 
-#line 989 "basic_ops.ops"
+#line 994 "basic_ops.ops"
 
   extern void ProgressPaint(sInt count,sInt max);
 
@@ -340,10 +340,10 @@ void SceneType_::Hit(wObject *obj,const sRay &ray,wHitInfo &info)
   ;
 #line 341 "basic_ops.cpp"
 }
-#line 645 "basic_ops.ops"
+#line 646 "basic_ops.ops"
 void SceneType_::Wireframe(wObject *obj,wPaintInfo &pi,sMatrix34 &mat)
 {
-#line 646 "basic_ops.ops"
+#line 647 "basic_ops.ops"
 
     if(obj->IsType(SceneType))
     {
@@ -2925,7 +2925,7 @@ sBool SceneCmdAdd(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new Scene; cmd->Output=out; }
 
   {
-#line 673 "basic_ops.ops"
+#line 674 "basic_ops.ops"
 
     for(sInt i=0;i<cmd->InputCount;i++)
     {
@@ -3006,7 +3006,7 @@ sBool SceneCmdConvertSceneNode(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new Scene; cmd->Output=out; }
 
   {
-#line 691 "basic_ops.ops"
+#line 692 "basic_ops.ops"
 
     if(!in0->IsType(MeshBaseType))
       return 0;
@@ -3083,7 +3083,7 @@ sBool SceneCmdNode(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new Scene; cmd->Output=out; }
 
   {
-#line 717 "basic_ops.ops"
+#line 718 "basic_ops.ops"
 
     if(!in0->IsType(MeshBaseType))
     {
@@ -3327,7 +3327,7 @@ sBool SceneCmdNameId(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new Scene; cmd->Output=out; }
 
   {
-#line 755 "basic_ops.ops"
+#line 756 "basic_ops.ops"
 
     for(sInt i=0;i<cmd->InputCount;i++)
     {
@@ -3442,7 +3442,7 @@ sBool SceneCmdSelectNameId(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new SceneSelectNameId; cmd->Output=out; }
 
   {
-#line 813 "basic_ops.ops"
+#line 814 "basic_ops.ops"
 
     out->Childs.AddTail(in0);
     in0->AddRef();
@@ -3564,7 +3564,7 @@ sBool SceneCmdTransform(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new Scene; cmd->Output=out; }
 
   {
-#line 836 "basic_ops.ops"
+#line 837 "basic_ops.ops"
 
     sSRT srt;
     srt.Scale = para->Scale;
@@ -3593,7 +3593,7 @@ sBool SceneCmdTransform(wExecutive *exe,wCommand *cmd)
 void SceneHndTransform(wPaintInfo &pi,wOp *op)
 {
   SceneParaTransform sUNUSED *para = (SceneParaTransform *)(op->EditData); para;
-#line 890 "basic_ops.ops"
+#line 894 "basic_ops.ops"
 
     pi.Handle3D(op,1,para->Translate,wHM_PLANE);
 
@@ -3612,7 +3612,7 @@ void SceneHndTransform(wPaintInfo &pi,wOp *op)
 sInt SceneActTransform(wOp *op,sInt code,sInt pos)
 {
   SceneParaTransform sUNUSED *para = (SceneParaTransform *)(op->EditData); para;
-#line 857 "basic_ops.ops"
+#line 858 "basic_ops.ops"
 
     sSRT srt;
     sString<256> str;
@@ -3846,7 +3846,7 @@ sBool SceneCmdMultiply(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new SceneMultiply; cmd->Output=out; }
 
   {
-#line 945 "basic_ops.ops"
+#line 949 "basic_ops.ops"
 
     sSRT srt;
     srt.Scale = para->Scale0;
@@ -3880,7 +3880,7 @@ sBool SceneCmdMultiply(wExecutive *exe,wCommand *cmd)
 void SceneHndMultiply(wPaintInfo &pi,wOp *op)
 {
   SceneParaMultiply sUNUSED *para = (SceneParaMultiply *)(op->EditData); para;
-#line 972 "basic_ops.ops"
+#line 976 "basic_ops.ops"
 
     sSRT srt;
     sMatrix34 mat;
@@ -4167,7 +4167,7 @@ sBool ScreenshotProxyCmdScreenshot(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new ScreenshotProxy; cmd->Output=out; }
 
   {
-#line 1039 "basic_ops.ops"
+#line 1044 "basic_ops.ops"
 
     out->Root = in0;
     in0->AddRef();
@@ -4210,7 +4210,7 @@ sBool ScreenshotProxyCmdScreenshot(wExecutive *exe,wCommand *cmd)
 sInt ScreenshotProxyActScreenshot(wOp *op,sInt code,sInt pos)
 {
   ScreenshotProxyParaScreenshot sUNUSED *para = (ScreenshotProxyParaScreenshot *)(op->EditData); para;
-#line 1075 "basic_ops.ops"
+#line 1080 "basic_ops.ops"
 
     if(code==1)
     {
@@ -4620,7 +4620,7 @@ sBool UnitTestCmdUnitTestAdd(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new UnitTest; cmd->Output=out; }
 
   {
-#line 1124 "basic_ops.ops"
+#line 1129 "basic_ops.ops"
 
     out->Errors = 0;
     out->Total = 0;
@@ -4701,7 +4701,7 @@ sBool UnitTestCmdUnitTestScene(wExecutive *exe,wCommand *cmd)
   if(!out) { out=new UnitTest; cmd->Output=out; }
 
   {
-#line 1158 "basic_ops.ops"
+#line 1163 "basic_ops.ops"
 
     sInt xs = 1<<para->SizeX;
     sInt ys = 1<<para->SizeY;
