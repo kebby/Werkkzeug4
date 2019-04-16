@@ -137,8 +137,11 @@ PlaylistMgr::PlaylistMgr()
         if (it->MyAsset->CacheStatus == Asset::NOTCACHED)
         {
           sScopeLock lock(&Lock);
-          RefreshList.AddTail(it->MyAsset);
-          it->MyAsset->AddRef();
+          if (!it->MyAsset->RefreshNode.IsValid())
+          {
+            RefreshList.AddTail(it->MyAsset);
+            it->MyAsset->AddRef();
+          }
         }
       }
     }
