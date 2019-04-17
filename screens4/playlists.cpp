@@ -94,7 +94,7 @@ static sU32 ParseColor(const sChar *str)
 
 /****************************************************************************/
 
-PlaylistMgr::PlaylistMgr()
+PlaylistMgr::PlaylistMgr(int rsx, int rsy)
 {
   // set up cache directories
   CacheDir = L"cache/";
@@ -116,6 +116,8 @@ PlaylistMgr::PlaylistMgr()
   CurRefreshing = 0;
   Locked = sFALSE;
 	CallbacksOn = sFALSE;
+  RenderSizeX = rsx;
+  RenderSizeY = rsy;
 
   // load all cached playlists
   sArray<sDirEntry> dir;
@@ -794,6 +796,7 @@ void PlaylistMgr::AssetThreadFunc(sThread *t)
 
             image.SavePNG(filename);
             sDeleteFile(htmlfilename);
+            LogTime(); sDPrintF(L"rendering DONE\n", toRefresh->Path);
           }
           else
 #endif
@@ -970,28 +973,24 @@ void PlaylistMgr::PrepareThreadFunc(sThread *t)
       case VIDEO:
         {
           nsd->Movie = sCreateMoviePlayer(filename,sMOF_DONTSTART|(item->Mute?sMOF_NOSOUND:0));
-          if (nsd->Movie)
-          {
-            
-          }
-          else
-          {
+          if (!nsd->Movie)
             nsd->Error = sTRUE;
-          }
         } break;
       }
     }
     else if (myAsset->CacheStatus == Asset::ONLINE)
     {
-        switch (nsd->Type)
-        {
+      switch (nsd->Type)
+      {
         case WEB:
         {
             sInt w, h;
             sGetScreenSize(w, h);
-            //nsd->Web = new WebView(myAsset->Path, w, h);
+            nsd->Web = CreateLiveBrowser(myAsset->Path, RenderSizeX, RenderSizeY, 0, false);
+            if (!nsd->Web)
+              nsd->Error = sTRUE;
         } break;
-        }
+      }
     }
     else
     {

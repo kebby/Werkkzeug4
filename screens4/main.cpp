@@ -227,7 +227,7 @@ public:
   RPCServer *Server;
   WebServer *Web;
 
-  PlaylistMgr PlMgr;
+  PlaylistMgr *PlMgr;
 
   sRandomMT Rnd;
 
@@ -350,7 +350,7 @@ public:
     wOp *TexOp;
     sAutoPtr<Texture2D> Tex;
 
-    RenderList Pic, OpaquePic, Siegmeister, CustomFS;
+    RenderList Pic, OpaquePic, Siegmeister, CustomFS, CustomFSWeb;
 
     sMoviePlayer* Movie;
     ILiveBrowser* Web;
@@ -430,9 +430,8 @@ public:
       PngOutThread = 0;
     PngOutEvent = new sThreadEvent();
 
-		PlMgr.CallbacksOn = MyConfig->Callbacks;
-    PlMgr.RenderSizeX = MyConfig->RenderResolution.Width;
-    PlMgr.RenderSizeY = MyConfig->RenderResolution.Height;
+    PlMgr = new PlaylistMgr(MyConfig->RenderResolution.Width, MyConfig->RenderResolution.Height);
+		PlMgr->CallbacksOn = MyConfig->Callbacks;
   }
 
   ~MyApp()
@@ -456,6 +455,8 @@ public:
 
     sDelete(Entry[0]);
     sDelete(Entry[1]);
+    
+    sDelete(PlMgr);
 
     sRemRoot(Doc);
     delete Painter;
@@ -553,7 +554,7 @@ public:
     } break;
     case WEB:
     {
-        NextSlide = e->CustomFS.GetNext(ns->RenderType);
+        NextSlide = e->CustomFSWeb.GetNext(ns->RenderType);
         sRelease(e->Web);
         e->Web = ns->Web;
         ns->Web = 0;
@@ -725,9 +726,10 @@ public:
       e->OpaquePic.Init(MyConfig->SlidePrefix, L"opaquepic", e->TexOp, e0 ? e0->OpaquePic.Random : 0);
       e->Siegmeister.Init(MyConfig->SlidePrefix, L"siegmeister", e->TexOp, e0 ? e0->Siegmeister.Random : 0);
       e->CustomFS.Init(MyConfig->SlidePrefix, L"video", 0, e0 ? e0->CustomFS.Random : 0);
+      e->CustomFSWeb.Init(MyConfig->SlidePrefix, L"web", 0, e0 ? e0->CustomFSWeb.Random : 0);
     }
 
-    Server = new RPCServer(PlMgr, MyConfig->Port);
+    Server = new RPCServer(*PlMgr, MyConfig->Port);
     //Web = new WebServer(PlMgr, MyConfig->HttpPort);
 
     Loaded=sTRUE;
@@ -891,7 +893,7 @@ public:
         }
       }
 
-      NewSlideData *newslide = PlMgr.OnFrame(tdelta/1000.0f, doneId, doneHard);
+      NewSlideData *newslide = PlMgr->OnFrame(tdelta/1000.0f, doneId, doneHard);
 
       if (newslide)
       {
@@ -951,6 +953,17 @@ public:
         Entry[0]->Movie->GetFrame(uvr);
       }
 
+      if (Entry[1]->Web)
+      {
+        sFRect uvr;
+        Entry[1]->Web->GetFrame(uvr);
+      }
+      if (Entry[0]->Web && TransTime >= 0)
+      {
+        sFRect uvr;
+        Entry[0]->Web->GetFrame(uvr);
+      }
+
       SetPaintInfo(PaintInfo);
 
       PaintInfo.TimeMS = Time;
@@ -986,12 +999,12 @@ public:
       if (Dimmed)
       {
         DimTime = sMin<sF32>(DimTime + tdelta / 1000.0f, 1);
-        PlMgr.Locked = MyConfig->LockWhenDimmed;
+        PlMgr->Locked = MyConfig->LockWhenDimmed;
       }
       else
       {
         DimTime = sMax<sF32>(DimTime - tdelta / 1000.0f, 0);
-        PlMgr.Locked = sFALSE;
+        PlMgr->Locked = sFALSE;
       }
 
       // paint!
@@ -1039,7 +1052,7 @@ public:
 
   void OnInput(const sInput2Event &ie)
   {
-    if (PlMgr.OnInput(ie))
+    if (PlMgr->OnInput(ie))
       return;
 
     sU32 key = ie.Key;

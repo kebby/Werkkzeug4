@@ -206,15 +206,15 @@ public:
 
   const sChar *RenderType;
 
-  NewSlideData() : ImgData(0), SiegData(0), Movie(0), Id(0), OrgImage(0), RenderType(0) {}
-  ~NewSlideData() { delete ImgData; delete OrgImage; delete SiegData; sRelease(Movie); }
+  NewSlideData() : ImgData(0), SiegData(0), Movie(0), Id(0), OrgImage(0), RenderType(0), Web(0) {}
+  ~NewSlideData() { delete ImgData; delete OrgImage; delete SiegData; sRelease(Movie); sRelease(Web); }
 };
 
 class PlaylistMgr
 {
 public:
 
-  PlaylistMgr();
+  PlaylistMgr(int rsx, int rsy);
   ~PlaylistMgr();
 
   // Adds new play list to pool (takes ownership of pl)

@@ -390,7 +390,7 @@ void InitGFX(sInt flags_,sInt xs_,sInt ys_)
     timeBeginPeriod(1);
     restart = 0;
 
-    DWORD behaviorfFlags = D3DCREATE_HARDWARE_VERTEXPROCESSING;
+    DWORD behaviorfFlags = D3DCREATE_HARDWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED;
 
     // handle onboard gpus with software vertex processing correctly:
     if(!(DXCaps.DevCaps&D3DDEVCAPS_HWTRANSFORMANDLIGHT) || DXCaps.VertexShaderVersion < D3DVS_VERSION(1,1))
