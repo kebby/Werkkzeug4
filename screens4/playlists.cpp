@@ -94,7 +94,7 @@ static sU32 ParseColor(const sChar *str)
 
 /****************************************************************************/
 
-PlaylistMgr::PlaylistMgr()
+PlaylistMgr::PlaylistMgr(int rsx, int rsy)
 {
   // set up cache directories
   CacheDir = L"cache/";
@@ -116,6 +116,8 @@ PlaylistMgr::PlaylistMgr()
   CurRefreshing = 0;
   Locked = sFALSE;
 	CallbacksOn = sFALSE;
+  RenderSizeX = rsx;
+  RenderSizeY = rsy;
 
   // load all cached playlists
   sArray<sDirEntry> dir;
@@ -137,8 +139,11 @@ PlaylistMgr::PlaylistMgr()
         if (it->MyAsset->CacheStatus == Asset::NOTCACHED)
         {
           sScopeLock lock(&Lock);
-          RefreshList.AddTail(it->MyAsset);
-          it->MyAsset->AddRef();
+          if (!it->MyAsset->RefreshNode.IsValid())
+          {
+            RefreshList.AddTail(it->MyAsset);
+            it->MyAsset->AddRef();
+          }
         }
       }
     }
@@ -782,15 +787,16 @@ void PlaylistMgr::AssetThreadFunc(sThread *t)
             sAppendString(htmlfilename, L".html");
             sRenameFile(downloadfilename, htmlfilename, sTRUE);
 
-            LogTime(); sDPrintF(L"rendering %s to PNG\n", toRefresh->Path);
+            LogTime(); sDPrintF(L"rendering %s to TGA\n", toRefresh->Path);
             sString<1024> url;
             GetFileUrlFromPath(url, htmlfilename);
             sImage image;
             image.Init(RenderSizeX, RenderSizeY);
             RenderHtml(url, 0x00000000, true, image);
 
-            image.SavePNG(filename);
+            image.SaveTGA(filename);
             sDeleteFile(htmlfilename);
+            LogTime(); sDPrintF(L"rendering DONE\n", toRefresh->Path);
           }
           else
 #endif
@@ -967,28 +973,24 @@ void PlaylistMgr::PrepareThreadFunc(sThread *t)
       case VIDEO:
         {
           nsd->Movie = sCreateMoviePlayer(filename,sMOF_DONTSTART|(item->Mute?sMOF_NOSOUND:0));
-          if (nsd->Movie)
-          {
-            
-          }
-          else
-          {
+          if (!nsd->Movie)
             nsd->Error = sTRUE;
-          }
         } break;
       }
     }
     else if (myAsset->CacheStatus == Asset::ONLINE)
     {
-        switch (nsd->Type)
-        {
+      switch (nsd->Type)
+      {
         case WEB:
         {
             sInt w, h;
             sGetScreenSize(w, h);
-            //nsd->Web = new WebView(myAsset->Path, w, h);
+            nsd->Web = CreateLiveBrowser(myAsset->Path, RenderSizeX, RenderSizeY, 0, false);
+            if (!nsd->Web)
+              nsd->Error = sTRUE;
         } break;
-        }
+      }
     }
     else
     {

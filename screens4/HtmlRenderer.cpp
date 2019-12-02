@@ -19,7 +19,6 @@
 #include "include/wrapper/cef_helpers.h"
 #include "util/shaders.hpp"
 
-
 extern HWND sHWND;
 
 #include "HtmlRenderer.hpp"
@@ -67,12 +66,17 @@ void InitCef()
   auto dir2 = dir;
   dir2.AddPath(L"locales");
 
+  sString<1024> cachedir;
+  sGetCurrentDir(cachedir);
+  cachedir.AddPath(L"cache/cef");
+
   CefSettings settings;
   settings.windowless_rendering_enabled = true;
   settings.multi_threaded_message_loop = true;
   settings.no_sandbox = true;
   CefString(&settings.resources_dir_path) = dir;
   CefString(&settings.locales_dir_path) = dir2;
+  CefString(&settings.cache_path) = cachedir;
 
   CefInitialize(main_args, settings, app, 0);
 }
@@ -91,7 +95,8 @@ struct OfflineClient :
   public CefClient,
   public CefLifeSpanHandler,
   public CefLoadHandler,
-  public CefRenderHandler
+  public CefRenderHandler,
+  public CefDisplayHandler
 {
   OfflineClient(sImage &img) : Image(img) {}
   virtual ~OfflineClient() {}
@@ -113,9 +118,9 @@ struct OfflineClient :
     if (!CefBrowserHost::CreateBrowser(winfo, this, url, settings, 0))
       return false;
 
-    if (!PaintEvent.Wait(5000))
+    if (!PaintEvent.Wait(50000))
     {
-      sDPrintF(L"HtmlRenderer: render timeout for %s", url);
+      //sDPrintF(L"HtmlRenderer: render timeout for %s\n", url);
     }
     Browser->GetHost()->CloseBrowser(true);    
     Browser = 0;
@@ -126,6 +131,7 @@ struct OfflineClient :
   virtual CefRefPtr<CefLifeSpanHandler> GetLifeSpanHandler() override { return this; }
   virtual CefRefPtr<CefLoadHandler> GetLoadHandler() override { return this; }
   virtual CefRefPtr<CefRenderHandler> GetRenderHandler() override { return this; }
+  virtual CefRefPtr<CefDisplayHandler> GetDisplayHandler() override { return this; }
 
   // CefLifeSpanHandler methods
   void OnAfterCreated(CefRefPtr<CefBrowser> browser) override {
@@ -138,8 +144,10 @@ struct OfflineClient :
   {
     if (frame->IsMain())
     {
+      //sDPrintF(L"OnLoadEnd\n");
       LoadDone = true;
-      Browser->GetHost()->Invalidate(PET_VIEW);
+      Browser->GetHost()->WasResized();
+      //Browser->GetHost()->Invalidate(PET_VIEW);
     }
   }
 
@@ -152,14 +160,45 @@ struct OfflineClient :
   // CefRenderHandler methods
   void GetViewRect(CefRefPtr<CefBrowser> browser, CefRect& rect) override
   {
-    rect.Set(0, 0, Image.SizeX, Image.SizeY);
+    if (LoadDone)
+      rect.Set(0, 0, Image.SizeX, Image.SizeY);
+    else
+      rect.Set(0, 0, 1, 1);
   }
 
   void OnPaint(CefRefPtr<CefBrowser> browser, PaintElementType type, const RectList& dirtyRects, const void* buffer, int width, int height) override
   {
-    sCopyMem(Image.Data, buffer, 4 * width*height);
-    if (LoadDone && type==PET_VIEW)
-      PaintEvent.Signal();
+    //sDPrintF(L"OnPaint %d %d\n", width, height);
+    if (type == PET_VIEW && width>1 && height>1)
+    {
+      const sU32 *src = (const sU32*)buffer;
+      sU32 *dst = Image.Data;
+      sInt np = width*height;
+      sInt nap = 0;
+      for (int i = 0; i < np; i++)
+      {
+        sU32 p = *src++;
+        if (p >= 0x80000000) nap++;
+        *dst++ = p;
+      }
+      if (LoadDone)
+      {
+        if (nap<100)
+        {
+          //sDPrintF(L"no pixels :(\n");
+          return;
+        }
+        //sDPrintF(L"yeah! %d\n",nap);
+        PaintEvent.Signal();
+      }
+    }
+  }
+
+  // CefDisplayHandler
+  virtual bool OnConsoleMessage(CefRefPtr<CefBrowser> browser, cef_log_severity_t level, const CefString& message, const CefString& source, int line) 
+  {
+    //sDPrintF(L"console: %s\n", message.c_str());
+    return true;
   }
 
   bool Error = false;
@@ -189,9 +228,6 @@ struct LiveClient :
 {
   LiveClient(const sChar *url, sInt sizeX, sInt sizeY, sU32 bkcolor, bool local) : SizeX(sizeX), SizeY(sizeY)
   {
-    stagingTex = new sTexture2D(sizeX, sizeY, sTEX_2D | sTEX_ARGB8888 | sTEX_STAGING | sTEX_NOMIPMAPS);
-    outputTex = new sTexture2D(sizeX, sizeY, sTEX_2D | sTEX_ARGB8888 | sTEX_DYNAMIC | sTEX_NOMIPMAPS);
-
     CefWindowInfo winfo;
     winfo.SetAsWindowless(sHWND);
     //winfo.shared_texture_enabled = true;
@@ -205,12 +241,8 @@ struct LiveClient :
     settings.background_color = bkcolor;
     settings.windowless_frame_rate = 60;
 
-    Mtrl = new sSimpleMaterial;
-
-    Mtrl->Flags = sMTRL_ZOFF | sMTRL_CULLOFF | sMTRL_VC_COLOR0;
-    Mtrl->Texture[0] = outputTex;
-    Mtrl->TFlags[0] = sMTF_CLAMP | sMTF_UV0;
-    Mtrl->Prepare(sVertexFormatSingle);
+    if (bkcolor < 0xff000000) 
+      HasAlpha = true;
 
     CefBrowserHost::CreateBrowser(winfo, this, url, settings, 0);       
   }
@@ -225,13 +257,38 @@ struct LiveClient :
   // ILiveBrowser methods
   sMaterial * GetFrame(sFRect &uvrect) override
   {
-    uvrect.Init(0, 0, 1, 1);
+    
+
+    if (!stagingTex)
+      stagingTex = new sTexture2D(SizeX, SizeY, sTEX_2D | sTEX_ARGB8888 | sTEX_STAGING | sTEX_NOMIPMAPS);
+
+    if (!Mtrl)
+    {
+      if (!outputTex)
+        outputTex = new sTexture2D(SizeX, SizeY, sTEX_2D | sTEX_ARGB8888 | sTEX_DYNAMIC | sTEX_NOMIPMAPS);
+
+      Mtrl = new sSimpleMaterial;
+      Mtrl->Flags = sMTRL_ZOFF | sMTRL_CULLOFF | sMTRL_VC_COLOR0;
+      Mtrl->BlendColor = HasAlpha ? sMB_ALPHA : sMB_OFF;
+      Mtrl->Texture[0] = outputTex;
+      Mtrl->TFlags[0] = sMTF_CLAMP | sMTF_UV0;
+      Mtrl->Prepare(sVertexFormatSingle);
+
+      if (Browser)
+        Browser->GetHost()->Invalidate(PET_VIEW);
+    }
 
     if (Dirty)
     {
       outputTex->UpdateFrom(stagingTex);
+      Painted = true;
       Dirty = 0;
     }
+
+    if (LoadDone && Painted)
+      uvrect.Init(0, 0, 1, 1);
+    else
+      uvrect.Init(0, 0, 0, 0);
 
     return Mtrl;
   }
@@ -282,12 +339,15 @@ struct LiveClient :
 
   void OnPaint(CefRefPtr<CefBrowser> browser, PaintElementType type, const RectList& dirtyRects, const void* buffer, int width, int height) override
   {
+    auto *st = stagingTex;
+    if (!st) return;
+
     for (auto r : dirtyRects)
     {
       sRect tr(r.x, r.y, r.x + r.width, r.y + r.height);
       sU8 *data;
       sInt pitch;
-      stagingTex->BeginLoadPartial(tr, data, pitch);
+      st->BeginLoadPartial(tr, data, pitch);
       const sU32 *src = ((const sU32*)buffer) + r.y*SizeX + r.x;
       for (int y = 0; y < r.height; y++)
       {
@@ -295,7 +355,7 @@ struct LiveClient :
         src += SizeX;
         data += pitch;
       }
-      stagingTex->EndLoad();
+      st->EndLoad();
     }
     
     Dirty = 1;
@@ -309,6 +369,8 @@ struct LiveClient :
   bool Error = false;
   bool LoadDone = false;
   bool Dirty = false;
+  bool Painted = false;
+  bool HasAlpha = false;
   CefRefPtr<CefBrowser> Browser;
 //  void *sharehandle = 0;
 //  void *lasthandle = 0;
