@@ -81,6 +81,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

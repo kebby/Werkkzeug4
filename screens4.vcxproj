@@ -108,6 +108,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4;$(ProjectDir)/cef</AdditionalIncludeDirectories>
+      <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

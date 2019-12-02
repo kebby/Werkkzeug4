@@ -432,6 +432,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AssemblerListingLocation>$(IntDir)/%(RelativeDir)/</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

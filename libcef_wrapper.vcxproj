@@ -626,6 +626,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)cef</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

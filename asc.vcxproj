@@ -108,6 +108,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
+      <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +129,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
+      <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

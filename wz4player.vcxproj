@@ -87,6 +87,7 @@
       <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ExceptionHandling>false</ExceptionHandling>
+      <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
