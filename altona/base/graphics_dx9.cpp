@@ -73,12 +73,12 @@ enum sMtrlStateCfg
 
 /****************************************************************************/
 
-static IDirect3D9 *DX9 = 0;
+static IDirect3D9Ex *DX9 = 0;
 static UINT DX9Adapter = 0;
 static D3DDEVTYPE DX9DevType;
 static D3DFORMAT DX9Format;
 static sScreenMode DXScreenMode;
-/*static */IDirect3DDevice9 *DXDev=0;
+IDirect3DDevice9Ex *DXDev=0;
 static IDirect3DSurface9 *DXBlockSurface[2]={0,0};
 #define sMAXSCREENS 16
 static sInt DXScreenCount;
@@ -150,7 +150,7 @@ static sArray<sOccQueryNode *> *AllOccQueryNodes;
 
 static sU32 sDXStates[sMS_MAX];
 
-void ConvertFlags(sU32 flags, D3DFORMAT& d3df, D3DPOOL& pool, sInt& usage, sInt& mm, sInt& lflags);
+void ConvertFlags(sU32 flags, D3DFORMAT& d3df, D3DPOOL& pool, sInt& usage, sInt& mm, sInt& lflags, sInt &staging);
 
 /****************************************************************************/
 
@@ -161,6 +161,8 @@ struct sGeoBuffer
     struct IDirect3DIndexBuffer9 *IB;
     struct IDirect3DVertexBuffer9 *VB;
   };
+
+  sU8* StagingMem;
 
   void Init();                    // preapre
   void Exit();                    // destructor
@@ -265,7 +267,7 @@ static void MakeDX9()
 {
   if(!DX9)
   {
-    DX9 = Direct3DCreate9(D3D_SDK_VERSION);
+    Direct3DCreate9Ex(D3D_SDK_VERSION, &DX9);
     if(!DX9) sFatal(L"Could not create DirectX9");
   }
 }
@@ -411,15 +413,15 @@ void InitGFX(sInt flags_,sInt xs_,sInt ys_)
     sCheckCapsHook->Call();
 
     //HRESULT hr = DX9->CreateDeviceEx(adapter,DevType,sHWND,behaviorfFlags,d3dpp,(flags2 & sSM_FULLSCREEN)?&modeex:0,&DXDev);
-    HRESULT hr = DX9->CreateDevice(adapter,DevType,sHWND,behaviorfFlags,d3dpp,&DXDev);
+    HRESULT hr = DX9->CreateDeviceEx(adapter,DevType,sHWND,behaviorfFlags,d3dpp, (flags2 & sSM_FULLSCREEN) ? &modeex : NULL, &DXDev);
 
     if(FAILED(hr) && DXScreenCount==1)
     {
-      DXScreenMode.ScreenX = d3dpp[0].BackBufferWidth = 800;
-      DXScreenMode.ScreenY = d3dpp[0].BackBufferHeight = 600;
+      DXScreenMode.ScreenX = d3dpp[0].BackBufferWidth = modeex.Width = 800;
+      DXScreenMode.ScreenY = d3dpp[0].BackBufferHeight = modeex.Height = 600;
       DXScreenMode.Aspect = sF32(DXScreenMode.ScreenX) / sF32(DXScreenMode.ScreenY);
       sLogF(L"gfx",L"retry d3d %d x %d\n",DXScreenMode.ScreenX,DXScreenMode.ScreenY);
-      hr = DX9->CreateDevice(adapter, DevType, sHWND, behaviorfFlags, d3dpp, &DXDev);
+      hr = DX9->CreateDeviceEx(adapter, DevType, sHWND, behaviorfFlags, d3dpp, (flags2 & sSM_FULLSCREEN) ? &modeex : NULL, &DXDev);
     }
     if(FAILED(hr))
       sFatal(L"failed to initialize 3d graphics");
@@ -1835,8 +1837,8 @@ sGpuToCpu::sGpuToCpu(sInt flags,sInt xs,sInt ys)
 
   D3DPOOL pool;
   D3DFORMAT fmt;
-  sInt usage,mm,lflags;
-  ConvertFlags(flags,fmt,pool,usage,mm,lflags);
+  sInt usage, mm, lflags, staging;
+  ConvertFlags(flags,fmt,pool,usage,mm,lflags,staging);
 
   DXFormat = (sInt) fmt;
 
@@ -2138,6 +2140,11 @@ void sSetTexture(sInt binding, class sTextureBase* tex)
 #endif
     if(tex)
     {
+      if (tex->NeedUpdate)
+      {
+        DXErr(DXDev->UpdateTexture(tex->StagingTexBase, tex->TexBase));
+        tex->NeedUpdate = 0;
+      }
       DXErr(DXDev->SetTexture(stage,tex->TexBase));
     }
     else
@@ -2580,8 +2587,7 @@ void sGeoBuffer::Init()
 
 void sGeoBuffer::Exit()
 {
-  sRelease(VB);
-  sRelease(IB);
+  Reset();
 }
 
 void sGeoBuffer::Reset()
@@ -2589,7 +2595,7 @@ void sGeoBuffer::Reset()
   sVERIFY(!LockPtr);
   sRelease(VB);
   sRelease(IB);
-
+  sDelete(StagingMem);
   Duration = sGD_NONE;
   BufferType = 0;
   Alloc = 0;
@@ -2605,7 +2611,13 @@ void sGeoBuffer::Lock()
   sVERIFY(LockPtr==0);
   sGeoBufferLocks++;
 
-  sInt lock = (Duration==sGD_STATIC) ? 0 : D3DLOCK_NOOVERWRITE;
+  if (Duration == sGD_STATIC)
+  {
+    LockPtr = StagingMem;
+    return;
+  }
+
+  sInt lock = D3DLOCK_NOOVERWRITE;
   if(Discard)
   {
     lock = D3DLOCK_DISCARD;
@@ -2614,12 +2626,12 @@ void sGeoBuffer::Lock()
 
   switch(BufferType)
   {
-  case 0:
-    DXErr(VB->Lock(0,0,&LockPtr,lock));
+  case 0:    
+    DXErr(VB->Lock(0, 0, &LockPtr, lock));
     break;
   case 1:
   case 2:
-    DXErr(IB->Lock(0,0,&LockPtr,lock));
+    DXErr(IB->Lock(0, 0, &LockPtr, lock));
     break;
   }
 }
@@ -2628,7 +2640,25 @@ void sGeoBuffer::Unlock()
 {
   sVERIFY(LockPtr);
   sGeoBufferLocks--;
+
+  if (Duration == sGD_STATIC)
+  {
+    switch (BufferType)
+    {
+    case 0:
+      DXErr(VB->Lock(0, 0, &LockPtr, 0));
+      break;
+    case 1:
+    case 2:
+      DXErr(IB->Lock(0, 0, &LockPtr, 0));
+      break;
+    }
+
+    sCopyMem(LockPtr, StagingMem, Alloc);
+  }
+
   LockPtr = 0;
+
   switch(BufferType)
   {
   case 0:
@@ -2639,6 +2669,7 @@ void sGeoBuffer::Unlock()
     DXErr(IB->Unlock());
     break;
   }
+
 }
 
 sInt sGeoBuffer::CheckSize(sInt count,sInt size)
@@ -2878,7 +2909,6 @@ void *sGeoBufferPart::Init(sInt count,sInt size,sGeometryDuration duration,sInt 
 
   if(Buffer == 0)
   {
-    D3DPOOL pool;
     D3DFORMAT format;
     DWORD usage;
 
@@ -2904,16 +2934,9 @@ void *sGeoBufferPart::Init(sInt count,sInt size,sGeometryDuration duration,sInt 
     gb->InUse = 0;
 
     format = D3DFMT_UNKNOWN;
-    if(duration==sGD_STATIC)
-    {
-      usage = D3DUSAGE_WRITEONLY;
-      pool = D3DPOOL_MANAGED;
-    }
-    else
-    {
-      usage = D3DUSAGE_WRITEONLY|D3DUSAGE_DYNAMIC;
-      pool = D3DPOOL_DEFAULT;
-    }
+    usage = D3DUSAGE_WRITEONLY;
+    if(duration!=sGD_STATIC)
+      usage |= D3DUSAGE_DYNAMIC;
 
     gb->Alloc = count*size;
     if(duration!=sGD_DYNAMIC)
@@ -2922,16 +2945,18 @@ void *sGeoBufferPart::Init(sInt count,sInt size,sGeometryDuration duration,sInt 
     switch(buffertype)
     {
     case 0:
-      DXErr(DXDev->CreateVertexBuffer(gb->Alloc,usage,0,pool,&gb->VB,0));
+      DXErr(DXDev->CreateVertexBuffer(gb->Alloc,usage,0,D3DPOOL_DEFAULT,&gb->VB,0));
       break;
     case 1:
-      DXErr(DXDev->CreateIndexBuffer(gb->Alloc,usage,D3DFMT_INDEX16,pool,&gb->IB,0));
+      DXErr(DXDev->CreateIndexBuffer(gb->Alloc,usage,D3DFMT_INDEX16, D3DPOOL_DEFAULT,&gb->IB,0));
       break;
     case 2:
-      DXErr(DXDev->CreateIndexBuffer(gb->Alloc,usage,D3DFMT_INDEX32,pool,&gb->IB,0));
+      DXErr(DXDev->CreateIndexBuffer(gb->Alloc,usage,D3DFMT_INDEX32, D3DPOOL_DEFAULT,&gb->IB,0));
       break;
     }
 
+    if (duration == sGD_STATIC)
+      gb->StagingMem = new sU8[gb->Alloc];
 
     Buffer = gb;
   }
@@ -3829,7 +3854,7 @@ void sOccQuery::Poll()
 /****************************************************************************/
 
 
-void ConvertFlags(sU32 flags, D3DFORMAT& d3df, D3DPOOL& pool, sInt& usage, sInt& mm, sInt& lflags)
+void ConvertFlags(sU32 flags, D3DFORMAT& d3df, D3DPOOL& pool, sInt& usage, sInt& mm, sInt& lflags, sInt& staging)
 {
   sInt rt = D3DUSAGE_RENDERTARGET;
 
@@ -3907,13 +3932,15 @@ void ConvertFlags(sU32 flags, D3DFORMAT& d3df, D3DPOOL& pool, sInt& usage, sInt&
       sVERIFYFALSE;
   }
 
-  pool = D3DPOOL_MANAGED;
+  pool = D3DPOOL_DEFAULT;
   usage = 0;
   lflags = 0;
+  staging = 1;
   if (flags & sTEX_STAGING)
   {
     sVERIFY(!(flags & sTEX_DYNAMIC));
     pool = D3DPOOL_SYSTEMMEM;
+    staging = 0;
   }
   if(flags & sTEX_RENDERTARGET)
   {
@@ -3921,6 +3948,7 @@ void ConvertFlags(sU32 flags, D3DFORMAT& d3df, D3DPOOL& pool, sInt& usage, sInt&
     sVERIFY((flags & sTEX_NOMIPMAPS) || (flags & sTEX_AUTOMIPMAP) || mm != 0); 
     pool = D3DPOOL_DEFAULT;
     usage = rt;
+    staging = 0;
   }
   if(flags & sTEX_DYNAMIC)
   {
@@ -3928,6 +3956,7 @@ void ConvertFlags(sU32 flags, D3DFORMAT& d3df, D3DPOOL& pool, sInt& usage, sInt&
     usage = D3DUSAGE_DYNAMIC;
     mm = 1;
     lflags = D3DLOCK_DISCARD;
+    staging = 0;
   }
   if(flags & sTEX_AUTOMIPMAP)   // to be used with sTEX_RENDERTARGET or sTEX_DYNAMIC
   {
@@ -3987,8 +4016,8 @@ void InitGraphicsCaps()
       D3DFORMAT d3df;
       D3DPOOL pool;
       DX9Format = D3DFMT_X8R8G8B8;
-      sInt usage,mm,lflags;
-      ConvertFlags(sTEX_2D|i,d3df,pool,usage,mm,lflags);
+      sInt usage,mm,lflags,staging;
+      ConvertFlags(sTEX_2D|i,d3df,pool,usage,mm,lflags,staging);
 
       hr = DX9->CheckDeviceFormat(DX9Adapter,DX9DevType,DX9Format,D3DUSAGE_QUERY_VERTEXTEXTURE,D3DRTYPE_TEXTURE,d3df);
       if(D3D_OK==hr)
@@ -4036,6 +4065,8 @@ void sPackDXT(sU8 *d,sU32 *bmp,sInt xs,sInt ys,sInt format,sBool dither)
 sTextureBasePrivate::sTextureBasePrivate()
 {
   Tex2D = 0;
+  StagingTex2D = 0;
+  NeedUpdate = 0;
   Surf2D = 0;
   MultiSurf2D = 0;
   ResolveFlags = 0;
@@ -4057,12 +4088,13 @@ void sTexture2D::Create2(sInt flags)
   D3DFORMAT format;
   D3DPOOL pool;
   sInt usage;
+  sInt staging;
 
   sVERIFY((flags & sTEX_TYPE_MASK)==sTEX_2D);
 
   // create resource
 
-  ConvertFlags(flags, format, pool, usage, Mipmaps, LockFlags);
+  ConvertFlags(flags, format, pool, usage, Mipmaps, LockFlags, staging);
   DXFormat = format;
 
   if((flags & sTEX_FORMAT)==sTEX_DEPTH16NOREAD || (flags & sTEX_FORMAT)==sTEX_DEPTH24NOREAD)
@@ -4071,8 +4103,12 @@ void sTexture2D::Create2(sInt flags)
   }
   else
   {
-    if(!(flags & sTEX_INTERNAL))
-      DXErr(DXDev->CreateTexture(SizeX,SizeY,Mipmaps,usage,format,pool,&Tex2D,ShareHandle ? &ShareHandle : 0));
+    if (!(flags & sTEX_INTERNAL))
+    {
+      DXErr(DXDev->CreateTexture(SizeX, SizeY, Mipmaps, usage, format, pool, &Tex2D, ShareHandle ? &ShareHandle : 0));
+      if (staging && !ShareHandle)
+        DXErr(DXDev->CreateTexture(SizeX, SizeY, Mipmaps, 0, format, D3DPOOL_SYSTEMMEM, &StagingTex2D, 0));
+    }
   }
 
   if(Mipmaps==0) Mipmaps=1;   // for autogenmipmap: use 0 as argument for CreateTexture, but 1 is the correct value for later because we have one accessible mipmap.
@@ -4137,6 +4173,7 @@ void sTexture2D::Destroy2()
   }
 
   sRelease(Tex2D);
+  sRelease(StagingTex2D);
   sRelease(Surf2D);
   sRelease(MultiSurf2D);
 
@@ -4182,7 +4219,12 @@ void sTexture2D::BeginLoad(sU8 *&data,sInt &pitch,sInt mipmap)
   sInt lflags = LockFlags;
   if(mipmap)                      // D3DLOCK_DISCARD is allowed only on the top level
     lflags &= ~D3DLOCK_DISCARD;
-  DXErr(Tex2D->LockRect(mipmap,&lr,0,LockFlags));
+  if (StagingTex2D)
+  {
+    DXErr(StagingTex2D->LockRect(mipmap, &lr, 0, LockFlags));
+  }
+  else
+    DXErr(Tex2D->LockRect(mipmap, &lr, 0, LockFlags));
   data = (sU8 *)lr.pBits;
   pitch = lr.Pitch;
   Loading = mipmap;
@@ -4203,6 +4245,14 @@ void sTexture2D::EndLoad()
 {
   sVERIFY(Loading>=0);
   DXErr(Tex2D->UnlockRect(Loading));
+  if (StagingTex2D)
+  { 
+    DXErr(StagingTex2D->UnlockRect(Loading));
+    NeedUpdate = 1;
+  }
+  else
+    DXErr(Tex2D->UnlockRect(Loading));
+
   Loading = -1;
 }
 
@@ -4260,11 +4310,13 @@ void sTextureCube::Create2(sInt flags)
 
   D3DFORMAT format;
   D3DPOOL pool;
-  sInt usage;
+  sInt usage, staging;
 
   // create resource
-  ConvertFlags(flags, format, pool, usage, Mipmaps, LockFlags);
+  ConvertFlags(flags, format, pool, usage, Mipmaps, LockFlags, staging);
   DXErr(DXDev->CreateCubeTexture(SizeXY,Mipmaps,usage,format,pool,&TexCube,0));
+  if (staging)
+    DXErr(DXDev->CreateCubeTexture(SizeXY, Mipmaps, 0, format, D3DPOOL_SYSTEMMEM, &StagingTexCube, 0));
 
   // register for lost device handling
   if ((Flags&sTEX_RENDERTARGET) || (Flags&sTEX_DYNAMIC))
@@ -4287,6 +4339,7 @@ void sTextureCube::Destroy2()
       }
   }
   sRelease(TexCube);
+  sRelease(StagingTexCube);
 }
 
 void sTextureCube::OnLostDevice(sBool reinit/*sFALSE*/)
@@ -4294,6 +4347,7 @@ void sTextureCube::OnLostDevice(sBool reinit/*sFALSE*/)
   if ((Flags&sTEX_RENDERTARGET) || (Flags&sTEX_DYNAMIC))
   {
     sRelease(TexCube);
+    sRelease(StagingTexCube);
     if (reinit) Init(SizeXY, Flags,Mipmaps,1);
 
     FrameRT = 0xffff;
@@ -4311,7 +4365,12 @@ void sTextureCube::BeginLoad(sTexCubeFace cf, sU8*& data, sInt& pitch, sInt mipm
   sInt lflags = LockFlags;
   if(cf!=sTCF_POSX||mipmap)               // D3DLOCK_DISCARD is allowed only on the top level
     lflags &= ~D3DLOCK_DISCARD;
-  DXErr(TexCube->LockRect(static_cast<D3DCUBEMAP_FACES>(cf), mipmap, &lr, 0, lflags));
+  if (StagingTexCube)
+  {
+    DXErr(StagingTexCube->LockRect(static_cast<D3DCUBEMAP_FACES>(cf), mipmap, &lr, 0, lflags));
+  }
+  else
+    DXErr(TexCube->LockRect(static_cast<D3DCUBEMAP_FACES>(cf), mipmap, &lr, 0, lflags));
   data = (sU8 *)lr.pBits;
   pitch = lr.Pitch;
   Loading = mipmap;
@@ -4321,7 +4380,13 @@ void sTextureCube::BeginLoad(sTexCubeFace cf, sU8*& data, sInt& pitch, sInt mipm
 void sTextureCube::EndLoad()
 {
   sVERIFY(Loading>=0);
-  DXErr(TexCube->UnlockRect(static_cast<D3DCUBEMAP_FACES>(LockedFace),Loading));
+  if (StagingTexCube)
+  {
+    DXErr(StagingTexCube->UnlockRect(static_cast<D3DCUBEMAP_FACES>(LockedFace), Loading));
+    NeedUpdate = 1;
+  }
+  else
+    DXErr(TexCube->UnlockRect(static_cast<D3DCUBEMAP_FACES>(LockedFace), Loading));
   Loading = -1;
 }
 
@@ -4378,7 +4443,7 @@ sTexture3D::sTexture3D(sInt xs, sInt ys, sInt zs, sU32 flags)
 {
   D3DFORMAT format;
   D3DPOOL pool;
-  sInt usage;
+  sInt usage, staging;
 
   SizeX = xs;
   SizeY = ys;
@@ -4399,8 +4464,10 @@ sTexture3D::sTexture3D(sInt xs, sInt ys, sInt zs, sU32 flags)
     Mipmaps = 1;
 
   BitsPerPixel = sGetBitsPerPixel(flags);
-  ConvertFlags(flags, format, pool, usage, Mipmaps, LockFlags);
+  ConvertFlags(flags, format, pool, usage, Mipmaps, LockFlags, staging);
   DXErr(DXDev->CreateVolumeTexture(SizeX, SizeY, SizeZ, Mipmaps,usage,format,pool,&Tex3D,0));
+  if (staging)
+    DXErr(DXDev->CreateVolumeTexture(SizeX, SizeY, SizeZ, Mipmaps, 0, format, D3DPOOL_SYSTEMMEM, &StagingTex3D, 0));
 
   // register rendertargets
   if((Flags&sTEX_RENDERTARGET) || (Flags&sTEX_DYNAMIC))
@@ -4423,7 +4490,14 @@ void sTexture3D::BeginLoad(sU8*& data, sInt& rpitch, sInt& spitch, sInt mipmap/*
   sInt lflags = LockFlags;
   if(mipmap)               // D3DLOCK_DISCARD is allowed only on the top level
     lflags &= ~D3DLOCK_DISCARD;
-  DXErr(Tex3D->LockBox(mipmap, &lr, 0, lflags));
+  if (StagingTex3D)
+  {
+    DXErr(StagingTex3D->LockBox(mipmap, &lr, 0, lflags));
+  }
+  else
+  {
+    DXErr(Tex3D->LockBox(mipmap, &lr, 0, lflags));
+  }
   data = (sU8 *)lr.pBits;
   rpitch = lr.RowPitch;
   spitch = lr.SlicePitch;
@@ -4433,7 +4507,13 @@ void sTexture3D::BeginLoad(sU8*& data, sInt& rpitch, sInt& spitch, sInt mipmap/*
 void sTexture3D::EndLoad()
 {
   sVERIFY(Loading>=0);
-  DXErr(Tex3D->UnlockBox(Loading));
+  if (StagingTex3D)
+  {
+    DXErr(StagingTex3D->UnlockBox(Loading));
+    NeedUpdate = 1;
+  }
+  else
+    DXErr(Tex3D->UnlockBox(Loading));
   Loading = -1;
 }
 

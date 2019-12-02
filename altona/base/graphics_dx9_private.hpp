@@ -61,6 +61,14 @@ protected:
     struct IDirect3DCubeTexture9 *TexCube;
     struct IDirect3DVolumeTexture9 *Tex3D;
   };
+  union
+  {
+    struct IDirect3DBaseTexture9* StagingTexBase;
+    struct IDirect3DTexture9* StagingTex2D;
+    struct IDirect3DCubeTexture9* StagingTexCube;
+    struct IDirect3DVolumeTexture9* StagingTex3D;
+  };
+  int NeedUpdate;
   void *ShareHandle;
   struct IDirect3DSurface9 *Surf2D;       // used only by DXBackBuffer
   struct IDirect3DSurface9 *MultiSurf2D;  // used by DXBackBuffer and multisampled rendertargets
