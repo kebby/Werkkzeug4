@@ -147,6 +147,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4;$(ProjectDir)/cef</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -175,6 +176,7 @@ copy /y $(ProjectDir)cef\Resources\locales $(OutDir)\Resources\locales
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4;$(ProjectDir)/cef</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -205,6 +207,7 @@ copy /y $(ProjectDir)cef\Resources\locales $(OutDir)\Resources\locales
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4;$(ProjectDir)/cef</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -237,6 +240,7 @@ copy /y $(ProjectDir)cef\Resources\locales $(OutDir)\Resources\locales
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories> $(ProjectDir)/altona;$(ProjectDir)/wz4;$(ProjectDir)/cef</AdditionalIncludeDirectories>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

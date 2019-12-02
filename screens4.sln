@@ -26,6 +26,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcef_wrapper", "libcef_wr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{B51ABDD6-7D46-4EAD-B11F-7D3757E48079}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wz4player", "wz4player.vcxproj", "{A8A467B2-33C4-433E-8D63-080A454B55E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{988F539C-DB3C-416D-94B1-96A61922BFFB} = {988F539C-DB3C-416D-94B1-96A61922BFFB}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -90,6 +95,14 @@ Global
 		{F097A71C-CFB6-415C-8F2D-8A5A369AD991}.Release|x64.Build.0 = Release|x64
 		{F097A71C-CFB6-415C-8F2D-8A5A369AD991}.Release|x86.ActiveCfg = Release|Win32
 		{F097A71C-CFB6-415C-8F2D-8A5A369AD991}.Release|x86.Build.0 = Release|Win32
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Debug|x64.ActiveCfg = Debug|x64
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Debug|x64.Build.0 = Debug|x64
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Debug|x86.ActiveCfg = Debug|Win32
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Debug|x86.Build.0 = Debug|Win32
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Release|x64.ActiveCfg = Release|x64
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Release|x64.Build.0 = Release|x64
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Release|x86.ActiveCfg = Release|Win32
+		{A8A467B2-33C4-433E-8D63-080A454B55E3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
