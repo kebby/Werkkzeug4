@@ -120,7 +120,7 @@ struct OfflineClient :
 
     if (!PaintEvent.Wait(50000))
     {
-      sDPrintF(L"HtmlRenderer: render timeout for %s\n", url);
+      //sDPrintF(L"HtmlRenderer: render timeout for %s\n", url);
     }
     Browser->GetHost()->CloseBrowser(true);    
     Browser = 0;
@@ -144,7 +144,7 @@ struct OfflineClient :
   {
     if (frame->IsMain())
     {
-      sDPrintF(L"OnLoadEnd\n");
+      //sDPrintF(L"OnLoadEnd\n");
       LoadDone = true;
       Browser->GetHost()->WasResized();
       //Browser->GetHost()->Invalidate(PET_VIEW);
@@ -168,19 +168,36 @@ struct OfflineClient :
 
   void OnPaint(CefRefPtr<CefBrowser> browser, PaintElementType type, const RectList& dirtyRects, const void* buffer, int width, int height) override
   {
-    sDPrintF(L"OnPaint %d %d\n", width, height);
+    //sDPrintF(L"OnPaint %d %d\n", width, height);
     if (type == PET_VIEW && width>1 && height>1)
     {
-      sCopyMem(Image.Data, buffer, 4 * width*height);
+      const sU32 *src = (const sU32*)buffer;
+      sU32 *dst = Image.Data;
+      sInt np = width*height;
+      sInt nap = 0;
+      for (int i = 0; i < np; i++)
+      {
+        sU32 p = *src++;
+        if (p >= 0x80000000) nap++;
+        *dst++ = p;
+      }
       if (LoadDone)
+      {
+        if (nap<100)
+        {
+          //sDPrintF(L"no pixels :(\n");
+          return;
+        }
+        //sDPrintF(L"yeah! %d\n",nap);
         PaintEvent.Signal();
+      }
     }
   }
 
   // CefDisplayHandler
   virtual bool OnConsoleMessage(CefRefPtr<CefBrowser> browser, cef_log_severity_t level, const CefString& message, const CefString& source, int line) 
   {
-    sDPrintF(L"console: %s\n", message.c_str());
+    //sDPrintF(L"console: %s\n", message.c_str());
     return true;
   }
 

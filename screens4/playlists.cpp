@@ -787,14 +787,14 @@ void PlaylistMgr::AssetThreadFunc(sThread *t)
             sAppendString(htmlfilename, L".html");
             sRenameFile(downloadfilename, htmlfilename, sTRUE);
 
-            LogTime(); sDPrintF(L"rendering %s to PNG\n", toRefresh->Path);
+            LogTime(); sDPrintF(L"rendering %s to TGA\n", toRefresh->Path);
             sString<1024> url;
             GetFileUrlFromPath(url, htmlfilename);
             sImage image;
             image.Init(RenderSizeX, RenderSizeY);
             RenderHtml(url, 0x00000000, true, image);
 
-            image.SavePNG(filename);
+            image.SaveTGA(filename);
             sDeleteFile(htmlfilename);
             LogTime(); sDPrintF(L"rendering DONE\n", toRefresh->Path);
           }
